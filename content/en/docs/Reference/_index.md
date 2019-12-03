@@ -1,14 +1,59 @@
 ---
-title: "Reference"
+title: Reference
+approvers:
+- chenopis
 linkTitle: "Reference"
-weight: 9
-description: >
-  Low level reference docs for your project.
+main_menu: true
+weight: 70
+content_template: templates/concept
 ---
 
-{{% pageinfo %}}
-This is a placeholder page that shows you how to use this template site.
-{{% /pageinfo %}}
+{{% capture overview %}}
 
-If your project has an API, configuration, or other reference - anything that users need to look up that’s at an even lower level than a single task - put (or link to it) here. You can serve and link to generated reference docs created using Doxygen,
-Javadoc, or other doc generation tools by putting them in your `static/` directory. Find out more in [Adding static content](https://docsy.dev/docs/adding-content/content/#adding-static-content). For OpenAPI reference, Docsy also provides a [Swagger UI layout and shortcode](https://www.docsy.dev/docs/adding-content/shortcodes/#swaggerui) that renders [Swagger UI](https://swagger.io/tools/swagger-ui/) using any OpenAPI YAML or JSON file as source.
+This section of the Kubernetes documentation contains references.
+
+{{% /capture %}}
+
+{{% capture body %}}
+
+## API Reference
+
+* [Kubernetes API Overview](/docs/reference/using-api/api-overview/) - Overview of the API for Kubernetes.
+* Kubernetes API Versions
+  * [1.16](/docs/reference/generated/kubernetes-api/v1.16/)
+  * [1.15](/docs/reference/generated/kubernetes-api/v1.15/)
+  * [1.14](/docs/reference/generated/kubernetes-api/v1.14/)
+  * [1.13](/docs/reference/generated/kubernetes-api/v1.13/)
+  * [1.12](/docs/reference/generated/kubernetes-api/v1.12/)
+
+## API Client Libraries
+
+To call the Kubernetes API from a programming language, you can use
+[client libraries](/docs/reference/using-api/client-libraries/). Officially supported
+client libraries:
+
+- [Kubernetes Go client library](https://github.com/kubernetes/client-go/)
+- [Kubernetes Python client library](https://github.com/kubernetes-client/python)
+- [Kubernetes Java client library](https://github.com/kubernetes-client/java)
+- [Kubernetes JavaScript client library](https://github.com/kubernetes-client/javascript)
+
+## CLI Reference
+
+* [kubectl](/docs/user-guide/kubectl-overview) - Main CLI tool for running commands and managing Kubernetes clusters.
+    * [JSONPath](/docs/user-guide/jsonpath/) - Syntax guide for using [JSONPath expressions](http://goessner.net/articles/JsonPath/) with kubectl.
+* [kubeadm](/docs/admin/kubeadm/) - CLI tool to easily provision a secure Kubernetes cluster.
+* [kubefed](/docs/admin/kubefed/) - CLI tool to help you administrate your federated clusters.
+
+## Config Reference
+
+* [kubelet](/docs/admin/kubelet/) - The primary *node agent* that runs on each node. The kubelet takes a set of PodSpecs and ensures that the described containers are running and healthy.
+* [kube-apiserver](/docs/admin/kube-apiserver/) - REST API that validates and configures data for API objects such as  pods, services, replication controllers.
+* [kube-controller-manager](/docs/admin/kube-controller-manager/) - Daemon that embeds the core control loops shipped with Kubernetes.
+* [kube-proxy](/docs/admin/kube-proxy/) - Can do simple TCP/UDP stream forwarding or round-robin TCP/UDP forwarding across a set of back-ends.
+* [kube-scheduler](/docs/admin/kube-scheduler/) - Scheduler that manages availability, performance, and capacity.
+
+## Design Docs
+
+An archive of the design docs for Kubernetes functionality. Good starting points are [Kubernetes Architecture](https://git.k8s.io/community/contributors/design-proposals/architecture/architecture.md) and [Kubernetes Design Overview](https://git.k8s.io/community/contributors/design-proposals).
+
+{{% /capture %}}

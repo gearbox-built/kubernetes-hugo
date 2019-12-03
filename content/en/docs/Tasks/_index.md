@@ -1,25 +1,87 @@
-
 ---
-title: "Core Tasks"
-linkTitle: "Core Tasks"
-weight: 6
-date: 2017-01-05
-description: >
-  What can your user do with your project?
+title: Tasks
+main_menu: true
+weight: 50
+content_template: templates/concept
 ---
 
-{{% pageinfo %}}
-This is a placeholder page that shows you how to use this template site.
-{{% /pageinfo %}}
+{{< toc >}}
 
-Think about your project’s features and use cases. Use these to choose your core tasks. Each granular use case (enable x, configure y) should have a corresponding tasks page or tasks page section. Users should be able to quickly refer to your core tasks when they need to find out how to do one specific thing, rather than having to look for the instructions in a bigger tutorial or example. Think of your tasks pages as a cookbook with different procedures your users can combine to create something more substantial.
+{{% capture overview %}}
 
-You can give each task a page, or you can group related tasks together in a page, such as tasks related to a particular feature. As well as grouping related tasks in single pages, you can also group task pages in nested folders with an index page as an overview, as seen in this example site. Or if you have a small docset like the [Docsy User Guide](https://docsy.dev/docs/) with no Tutorials or Concepts pages, consider adding your feature-specific pages at the top level of your docs rather than in a Tasks section. 
+This section of the Kubernetes documentation contains pages that
+show how to do individual tasks. A task page shows how to do a
+single thing, typically by giving a short sequence of steps.
 
-Each task should give the user
+{{% /capture %}}
 
-* The prerequisites for this task, if any (this can be specified at the top of a multi-task page if they're the same for all the page's tasks. "All these tasks assume that you understand....and that you have already....").
-* What this task accomplishes.
-* Instructions for the task. If it involves editing a file, running a command, or writing code, provide code-formatted example snippets to show the user what to do! If there are multiple steps, provide them as a numbered list.
-* If appropriate, links to related concept, tutorial, or example pages.
+{{% capture body %}}
 
+## Web UI (Dashboard)
+
+Deploy and access the Dashboard web user interface to help you manage and monitor containerized applications in a Kubernetes cluster.
+
+## Using the kubectl Command-line
+
+Install and setup the `kubectl` command-line tool used to directly manage Kubernetes clusters.
+
+## Configuring Pods and Containers
+
+Perform common configuration tasks for Pods and Containers.
+
+## Running Applications
+
+Perform common application management tasks, such as rolling updates, injecting information into pods, and horizontal Pod autoscaling.
+
+## Running Jobs
+
+Run Jobs using parallel processing.
+
+## Accessing Applications in a Cluster
+
+Configure load balancing, port forwarding, or setup firewall or DNS configurations to access applications in a cluster.
+
+## Monitoring, Logging, and Debugging
+
+Setup monitoring and logging to troubleshoot a cluster or debug a containerized application.
+
+## Accessing the Kubernetes API
+
+Learn various methods to directly access the Kubernetes API.
+
+## Using TLS
+
+Configure your application to trust and use the cluster root Certificate Authority (CA).
+
+## Administering a Cluster
+
+Learn common tasks for administering a cluster.
+
+## Administering Federation
+
+Configure components in a cluster federation.
+
+## Managing Stateful Applications
+
+Perform common tasks for managing Stateful applications, including scaling, deleting, and debugging StatefulSets.
+
+## Cluster Daemons
+
+Perform common tasks for managing a DaemonSet, such as performing a rolling update.
+
+## Managing GPUs
+
+Configure and schedule NVIDIA GPUs for use as a resource by nodes in a cluster.
+
+## Managing HugePages
+
+Configure and schedule huge pages as a schedulable resource in a cluster.
+
+{{% /capture %}}
+
+{{% capture whatsnext %}}
+
+If you would like to write a task page, see
+[Creating a Documentation Pull Request](/docs/home/contribute/create-pull-request/).
+
+{{% /capture %}}

@@ -1,13 +1,10 @@
 ---
-title: "Docsy Blog"
-linkTitle: "Blog"
+title: Kubernetes Blog
+linkTitle: Blog
 menu:
   main:
-    weight: 30
+    title: "Blog"
+    weight: 40
+    post: >
+       <p>Read the latest news for Kubernetes and the containers space in general, and get technical how-tos hot off the presses.</p>
 ---
-
-
-This is the **blog** section. It has two categories: News and Releases.
-
-Files in these directories will be listed in reverse chronological order.
-
