@@ -220,6 +220,68 @@ privacy_policy = "https://policies.google.com/privacy"
 # This menu appears only if you have at least one [params.versions] set.
 version_menu = "Releases"
 
+time_format_blog = "Monday, January 02, 2006"
+description = "Production-Grade Container Orchestration"
+showedit = true
+
+latest = "v1.16"
+
+fullversion = "v1.16.0"
+version = "v1.16"
+githubbranch = "master"
+docsbranch = "master"
+deprecated = false
+currentUrl = "https://kubernetes.io/docs/home/"
+nextUrl = "https://kubernetes-io-vnext-staging.netlify.com/"
+githubWebsiteRepo = "github.com/kubernetes/website"
+githubWebsiteRaw = "raw.githubusercontent.com/kubernetes/website"
+
+[[params.versions]]
+fullversion = "v1.16.0"
+version = "v1.16"
+githubbranch = "v1.16.0"
+docsbranch = "release-1.16"
+url = "https://kubernetes.io"
+
+[params.pushAssets]
+css = [
+  "callouts",
+  "styles",
+  "custom-jekyll/tags"
+]
+js = [
+  "custom-jekyll/tags",
+  "script"
+]
+
+[[params.versions]]
+fullversion = "v1.15.3"
+version = "v1.15"
+githubbranch = "v1.15.3"
+docsbranch = "release-1.15"
+url = "https://v1-15.docs.kubernetes.io"
+
+[[params.versions]]
+fullversion = "v1.14.6"
+version = "v1.14"
+githubbranch = "v1.14.6"
+docsbranch = "release-1.14"
+url = "https://v1-14.docs.kubernetes.io"
+
+[[params.versions]]
+fullversion = "v1.13.10"
+version = "v1.13"
+githubbranch = "v1.13.10"
+docsbranch = "release-1.13"
+url = "https://v1-13.docs.kubernetes.io"
+
+[[params.versions]]
+fullversion = "v1.12.10"
+version = "v1.12"
+githubbranch = "v1.12.10"
+docsbranch = "release-1.12"
+url = "https://v1-12.docs.kubernetes.io"
+
 # Repository configuration (URLs for in-page links to opening issues and suggesting changes)
 github_repo = "https://github.com/google/docsy-example"
 # An optional link to a related project repo. For example, the sibling repository where your product code lives.
