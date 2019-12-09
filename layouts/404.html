@@ -1,28 +1,8 @@
-{{ define "main" }}
-<div class="container-404">
-    <h4>
-        Perhaps you were looking for:
-    </h4>
-
-    <br />
-    <br />
-
-    <ul>
-        <li>
-            <a href="/docs">
-                The Kubernetes documentation
-            </a>
-        </li>
-        <li>
-            <a href="/blog">
-                The Kubernetes blog
-            </a>
-        </li>
-        <li>
-            <a href="/community">
-                The Kubernetes community
-            </a>
-        </li>
-    </ul>
-</div>
+{{ define "main"}}
+    <main id="main">
+      <div>
+       <h1 id="title">Not found</h1>
+          <p>Oops! This page doesn't exist. Try going back to our <a href="{{ "/" | relURL }}">home page</a>.</p>
+      </div>
+    </main>
 {{ end }}
