@@ -236,6 +236,23 @@ nextUrl = "https://kubernetes-io-vnext-staging.netlify.com/"
 githubWebsiteRepo = "github.com/kubernetes/website"
 githubWebsiteRaw = "raw.githubusercontent.com/kubernetes/website"
 
+# Repository configuration (URLs for in-page links to opening issues and suggesting changes)
+github_repo = "https://github.com/kubernetes/website"
+# An optional link to a related project repo. For example, the sibling repository where your product code lives.
+#github_project_repo = "https://github.com/google/docsy"
+
+# Specify a value here if your content directory is not in your repo's root directory
+# github_subdir = ""
+
+# Google Custom Search Engine ID. Remove or comment out to disable search.
+gcs_engine_id = "011737558837375720776:fsdu1nryfng"
+
+# Enable Algolia DocSearch
+algolia_docsearch = false
+
+# Enable Lunr.js offline search
+offlineSearch = false
+
 [[params.versions]]
 fullversion = "v1.16.0"
 version = "v1.16"
@@ -281,23 +298,6 @@ version = "v1.12"
 githubbranch = "v1.12.10"
 docsbranch = "release-1.12"
 url = "https://v1-12.docs.kubernetes.io"
-
-# Repository configuration (URLs for in-page links to opening issues and suggesting changes)
-github_repo = "https://github.com/google/docsy-example"
-# An optional link to a related project repo. For example, the sibling repository where your product code lives.
-github_project_repo = "https://github.com/google/docsy"
-
-# Specify a value here if your content directory is not in your repo's root directory
-# github_subdir = ""
-
-# Google Custom Search Engine ID. Remove or comment out to disable search.
-gcs_engine_id = "011737558837375720776:fsdu1nryfng"
-
-# Enable Algolia DocSearch
-algolia_docsearch = false
-
-# Enable Lunr.js offline search
-offlineSearch = false
 
 # User interface configuration
 [params.ui]
