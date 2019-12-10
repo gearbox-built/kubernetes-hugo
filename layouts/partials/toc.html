@@ -1,4 +1,4 @@
-{{ partial "page-meta-links.html" . }}
+{{ partial "page-meta-links.html" .page }}
 {{ if not .Params.notoc }}
 {{ with .page.Params.content_template }}
 {{ partial "template-toc-links.html" $ }}
