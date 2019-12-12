@@ -9,5 +9,6 @@
 {{ $.ctx.Scratch.Add "sections" $section }}
 {{ end }}
 {{ range .ctx.Scratch.Get "sections" }}
+{{ $.ctx.Scratch.Add "page" . }} 
 {{ . }}
 {{ end }}

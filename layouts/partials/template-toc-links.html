@@ -1,23 +1,14 @@
-{{ .ctx.Scratch.Set "blocks" slice }}
-{{ .ctx.Scratch.Add "blocks" (dict "page" .page "block" "body" "purpose" "supplies the body of the page content.")  }}
-{{ .ctx.Scratch.Add "blocks" (dict "content" .page.Content) }}
-{{ .ctx.Scratch.Add "blocks" (dict "page" .page "block" "whatsnext" "heading" (i18n "whatsnext_heading") "optional" true )  }}
-
-{{ .ctx.Scratch.Set "sections" slice }}
 <ul id="markdown-toc">
-{{ range .ctx.Scratch.Get "blocks" }}
-{{ if .block }}
-{{ $.ctx.Scratch.Set "section" (partial "templates/block" .) }}
-{{ else}}
-{{ $.ctx.Scratch.Set "section" .content }}
-{{ end }}
-{{ $section := $.ctx.Scratch.Get "section" }}
+
+{{/* Scratch variable built up in 'blocks.html' represents full parsed page from
+captured variables */}}
+{{ $section := $.ctx.Scratch.Get "page" }}
+
 {{ $headers := findRE "<h2.*?>(.|\n)*?</h2>" $section }}
 {{ range $headers }}
 {{ $id := . | strings.TrimPrefix "<h2 id=\"" }}
 {{ $id := $id | replaceRE "\">.*" "" }}
 {{ $header := . | replaceRE "</?h2.*?>" "" | htmlUnescape | safeHTML }}
 <li><a href="#{{ $id }}">{{ $header }}</a></li>
-{{ end }}
 {{ end }}
 </ul>
