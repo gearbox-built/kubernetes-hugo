@@ -1,10 +1,10 @@
 {{ partial "page-meta-links.html" .page }}
+<nav id="TableOfContents">
 {{ if not .Params.notoc }}
-{{ with .page.Params.content_template }}
+{{ if or (isset .page.Params "content_template") (isset .page.Params "layout") }}
 {{ partial "template-toc-links.html" $ }}
-{{ else }}
-{{ if and (not .page.Params.toc_hide) }}
+{{ else if and (not .page.Params.toc_hide) }}
 {{ .page.TableOfContents }}
 {{ end }}
 {{ end }}
-{{ end }}
+</nav>
