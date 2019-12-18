@@ -2,7 +2,7 @@
 <nav id="TableOfContents">
 {{ if not .Params.notoc }}
 {{ if or (isset .page.Params "content_template") (isset .page.Params "layout") }}
-{{ partial "template-toc-links.html" $ }}
+{{ partial "template-toc-links.html" . }}
 {{ else if and (not .page.Params.toc_hide) }}
 {{ .page.TableOfContents }}
 {{ end }}
