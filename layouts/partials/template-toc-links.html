@@ -2,7 +2,7 @@
 
 {{/* Scratch variable built up in 'blocks.html' represents full parsed page from
 captured variables */}}
-{{ $section := .Scratch.Get "page" }}
+{{ $section := .Scratch.Get "html" }}
 
 {{ $headers := findRE "<h2.*?>(.|\n)*?</h2>" $section }}
 {{ $headerSections := findRE "</h2>(.|\n)*?<h2" $section }}
