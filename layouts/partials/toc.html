@@ -1,7 +1,7 @@
 {{ partial "page-meta-links.html" . }}
 <nav id="TableOfContents">
 {{ if not .Params.notoc }}
-{{ if or (isset .Params "content_template") (isset .Params "layout") }}
+{{ if or (ne .Params.content_template nil) (ne .Params.layout nil) }}
 {{ partial "template-toc-links.html" . }}
 {{ else if and (not .Params.toc_hide) }}
 {{ .TableOfContents }}
