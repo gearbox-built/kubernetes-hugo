@@ -31,6 +31,28 @@ pygmentsStyle = "tango"
 [permalinks]
 blog = "/:section/:year/:month/:day/:slug/"
 
+# Be explicit about the output formats. We (currently) only want an RSS feed for the home page.
+[outputs]
+home = [ "HTML", "RSS", "HEADERS" ]
+page = [ "HTML"]
+section = [ "HTML"]
+
+# Add a "text/netlify" media type for auto-generating the _headers file
+[mediaTypes]
+[mediaTypes."text/netlify"]
+delimiter = ""
+
+[outputFormats]
+[outputFormats.RSS]
+baseName = "feed"
+
+# _headers file output (uses the template at layouts/index.headers)
+[outputFormats.HEADERS]
+mediatype = "text/netlify"
+baseName = "_headers"
+isPlainText = true
+notAlternative = true
+
 ## Configuration for BlackFriday markdown parser: https://github.com/russross/blackfriday
 [blackfriday]
 plainIDAnchors = true
@@ -244,8 +266,10 @@ github_project_repo = "https://github.com/kubernetes/website"
 # Specify a value here if your content directory is not in your repo's root directory
 # github_subdir = ""
 
+#The following search parameters are specific to Docsy's implementation. Kubernetes implementes its own search-related partials and scripts.
+
 # Google Custom Search Engine ID. Remove or comment out to disable search.
-gcs_engine_id = "011737558837375720776:fsdu1nryfng"
+#gcs_engine_id = "011737558837375720776:fsdu1nryfng"
 
 # Enable Algolia DocSearch
 algolia_docsearch = false
