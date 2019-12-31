@@ -266,6 +266,9 @@ github_project_repo = "https://github.com/kubernetes/website"
 # Specify a value here if your content directory is not in your repo's root directory
 # github_subdir = ""
 
+#Searching
+k8ts_search = true
+
 #The following search parameters are specific to Docsy's implementation. Kubernetes implementes its own search-related partials and scripts.
 
 # Google Custom Search Engine ID. Remove or comment out to disable search.
