@@ -7,10 +7,10 @@ functions = "functions"
 command = "make non-production-build"
 
 [build.environment]
-HUGO_VERSION = "0.57.2"
+HUGO_VERSION = "0.59.1"
 
 [context.production.environment]
-HUGO_BASEURL = "https://kubernetes.io/"
+HUGO_BASEURL = "https://kubernetes-hugo-staging.netlify.com/"
 HUGO_ENV = "production"
 HUGO_ENABLEGITINFO = "true"
 
