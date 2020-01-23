@@ -17,6 +17,16 @@ Add styles or override variables from the theme here.
   display: none !important;
 }
 
+.td-sidebar-link__page {
+  &#m-docs-search {
+    display: none;
+  }
+
+  &#m-docs-test {
+    display: none;
+  }
+}
+
 /* Tooltip container */
 .glossary-tooltip {
     position: relative;
