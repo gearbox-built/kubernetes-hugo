@@ -1,12 +1,60 @@
-/*
+//Add styles or override variables from the theme here.
 
-Add styles or override variables from the theme here.
+/* NAVBAR */
 
-*/
+.td-navbar {
+  background: transparent !important;
+
+  @media only screen and (max-width: 767px) {
+    margin: auto;
+    text-align: center;
+  }
+}
+
+.header-hero {
+  // position: relative;
+  background-color: #303030;  
+  background-image: url('/images/texture.png');
+  width: 100%;
+
+  @media only screen and (min-width: 767px) {
+    padding-top: 80px
+  }
+
+  @media only screen and (max-width: 767px) {
+    position: absolute;
+    top: 0;
+    padding-top: 180px;
+  }
+}
+
+/* SEARCH & SIDEBAR */
+
+.td-sidebar__inner {
+  form.td-sidebar__search {
+    input.form-control.td-search-input {
+      &::placeholder {
+        @media only screen and (max-width: 767px) {
+          color: white;
+        }
+      }
+    }
+
+    button.td-sidebar__toggle {
+      &:hover {
+        color: #fff;
+      }
+      
+      color: #3371e3
+    }
+  }
+}
 
 /* Spacing to accomodate languages dropdown menu after search bar removed */
 .td-navbar-nav-scroll {
-  margin-right: 80px !important;
+  @media only screen and (min-width: 767px) {
+    margin-right: 80px !important;
+  }
 }
 
 .no-underline {
@@ -26,6 +74,7 @@ Add styles or override variables from the theme here.
     display: none;
   }
 }
+/* DOCS */
 
 /* Tooltip container */
 .glossary-tooltip {
