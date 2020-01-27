@@ -126,6 +126,16 @@
   display: none !important;
 }
 
+.td-sidebar-link__page {
+  &#m-docs-search {
+    display: none;
+  }
+
+  &#m-docs-test {
+    display: none;
+  }
+}
+
 /* DOCS */
 
 /* Tooltip container */
