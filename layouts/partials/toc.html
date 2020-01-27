@@ -6,6 +6,9 @@
 {{ else if and (not .Params.toc_hide) }}
 {{ .TableOfContents }}
 {{ end }}
+{{ if eq .Params.layout "blog" }}
+{{ .TableOfContents }}
+{{ end }}
 {{ end }}
 </nav>
 
