@@ -1,6 +1,7 @@
 //Add styles or override variables from the theme here.
 
-/* NAVBAR */
+@import 'reset';
+@import 'settings';
 
 .td-navbar {
   background: transparent !important;
@@ -147,3 +148,4 @@ main {
     margin-bottom: 1rem;
   }
 }
+@import 'base';
