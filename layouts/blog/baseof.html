@@ -14,7 +14,7 @@
       <div class="td-main">
         <div class="row flex-xl-nowrap">
           <div class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none">
-            {{ partial "sidebar.html" . }}
+            {{ partial "blog-sidebar.html" . }}
           </div>
           <main class="col-12 col-md-9 col-xl-8 pl-md-5 pr-md-4" role="main">
             {{ with .CurrentSection.OutputFormats.Get "rss" -}}
