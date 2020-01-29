@@ -1,4 +1,17 @@
-/* NAVBAR */
+/* HEADER */
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 8888;
+  background-color: transparent;
+  box-shadow: 0 0 0 transparent;
+  overflow: hidden;
+  transition: 0.3s;
+  text-align: center;
+}
 
 .td-navbar {
   background: transparent !important;
@@ -10,13 +23,13 @@
 }
 
 .header-hero {
-  // position: relative;
+  position: relative;
   background-color: $dark-grey;
   background-image: url("/images/texture.png");
   width: 100%;
 
   @media only screen and (min-width: 767px) {
-    padding-top: 80px;
+    padding-top: 4rem;
   }
 
   @media only screen and (max-width: 767px) {
@@ -26,68 +39,11 @@
   }
 }
 
-// Start of imported k8ts styles from _base.sass
-#docs {
-  .flyout-button {
-    position: fixed;
-    top: 20px;
-    left: 20px;
-    width: 50px;
-    height: 50px;
-    background-image: url("/images/toc_icon.png");
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: auto;
-    border-radius: 50%;
-    transition: 0.3s;
-    z-index: 99999;
-  }
-
-  &.open-nav .flyout-button {
-    display: none;
-  }
-
-  .logo {
-    position: absolute;
-    top: 40px;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    display: block;
-    width: 45px;
-    height: 44px;
-    background-image: url("/images/favicon.png");
-  }
-
-  &.flip-nav .flyout-button {
-    background-image: url("/images/toc_icon_grey.png");
-  }
-}
-
-#blog {
-  &.flip-nav,
-  &.open-nav {
-    .logo {
-      background-image: url("/images/nav_logo2.svg");
-    }
-  }
-}
-
-.flip-nav ul.global-nav li ul li a {
-  background: $white;
-  color: $dark-grey;
-}
-
-.flip-nav ul.global-nav li a.active:after,
-.flip-nav ul.global-nav li ul li a.active:after,
-.open-nav ul.global-nav li a.active:after {
-  background: $blue;
-}
-
-// FLIP NAV
-.flip-nav .td-header {
+// Flip-Nav
+.flip-nav header {
   background-color: white;
+  box-shadow: 0 1px 2px $medium-grey;
 }
-// ! end of import
 
 /* SEARCH & SIDEBAR */
 
