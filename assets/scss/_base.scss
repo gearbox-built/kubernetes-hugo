@@ -1,7 +1,22 @@
+/* GLOBAL */
+.td-main main {
+  @media only screen and (min-width: 768px) {
+    padding-top: 2rem !important;
+  }
+
+  img {
+    max-width: 100%;
+  }
+
+  table {
+    margin-bottom: 1rem;
+  }
+}
+
 /* HEADER */
 
 header {
-  position: fixed;
+  position: relative;
   top: 0;
   left: 0;
   width: 100%;
@@ -9,16 +24,34 @@ header {
   background-color: transparent;
   box-shadow: 0 0 0 transparent;
   overflow: hidden;
-  transition: 0.3s;
   text-align: center;
 }
 
 .td-navbar {
   background: transparent !important;
+  transition: 0.3s;
+
+  .navbar-brand {
+    position: absolute;
+    margin-top: 1.5rem;
+    margin-left: 1rem;
+    width: 180px;
+    height: 88px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-image: url("/images/nav_logo.svg");
+  }
 
   @media only screen and (max-width: 767px) {
     margin: auto;
     text-align: center;
+
+    .navbar-brand {
+      background-image: url("/images/favicon.png");
+      position: relative;
+      width: 45px;
+      height: 44px;
+    }
   }
 }
 
@@ -29,23 +62,39 @@ header {
   width: 100%;
 
   @media only screen and (min-width: 767px) {
-    padding-top: 4rem;
+    padding-top: 7rem;
   }
 
   @media only screen and (max-width: 767px) {
     position: absolute;
     top: 0;
-    padding-top: 180px;
+    padding: 180px 180px;
   }
 }
 
 // Flip-Nav
-.flip-nav header {
-  background-color: white;
+.flip-nav header .td-navbar {
+  background-color: white !important;
   box-shadow: 0 1px 2px $medium-grey;
+
+  .navbar-nav .nav-link {
+    color: $dark-grey;
+  }
+
+  @media only screen and (min-width: 768px) {
+    .navbar-brand {
+      background-image: url("/images/nav_logo2.svg");
+    }
+  }
 }
 
 /* SEARCH & SIDEBAR */
+
+.td-sidebar {
+  @media only screen and (min-width:768px) {
+    padding-top: 0.75rem !important;
+  }
+}
 
 .td-sidebar__inner {
   form.td-sidebar__search {
@@ -90,6 +139,11 @@ header {
   &#m-docs-test {
     display: none;
   }
+}
+
+/* TOC */
+.td-toc {
+  padding-top: 1.5rem !important;
 }
 
 /* DOCS */
@@ -154,14 +208,4 @@ header {
   text-decoration: none;
   font-size: 1rem;
   margin-bottom: 1rem;
-}
-
-main {
-  img {
-    max-width: 100%;
-  }
-
-  table {
-    margin-bottom: 1rem;
-  }
 }
