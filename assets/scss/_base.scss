@@ -91,6 +91,19 @@ header {
 /* FOOTER */
 footer {
   background-image: url("/images/texture.png");
+
+  small {
+    color: $light-grey;
+    font-size: 0.725rem;
+    a {
+      text-decoration: inherit;
+      color: inherit;
+
+      &:hover {
+        color: inherit;
+      }
+    }
+  }
 }
 
 /* SEARCH & SIDEBAR */
