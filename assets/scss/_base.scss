@@ -45,6 +45,7 @@ header {
   @media only screen and (max-width: 767px) {
     margin: auto;
     text-align: center;
+    height: 16rem;
 
     .navbar-brand {
       background-image: url("/images/favicon.png");
@@ -68,7 +69,31 @@ header {
   @media only screen and (max-width: 767px) {
     position: absolute;
     top: 0;
-    padding: 180px 180px;
+    padding: 180px 0;
+  }
+}
+
+.td-navbar-nav-scroll {
+  overflow: visible !important;
+
+  ul.navbar-nav {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+
+    li {
+      height: 10%;
+    }
+
+    .nav-item .dropdown-menu {
+      left: -80px;
+    }
+  }
+
+  @media only screen and (min-width: 1024px) {
+
   }
 }
 
@@ -131,13 +156,6 @@ footer {
 
       color: $blue;
     }
-  }
-}
-
-/* Spacing to accomodate languages dropdown menu after search bar removed */
-.td-navbar-nav-scroll {
-  @media only screen and (min-width: 767px) {
-    margin-right: 80px !important;
   }
 }
 
