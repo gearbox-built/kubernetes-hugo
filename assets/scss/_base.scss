@@ -245,3 +245,10 @@ footer {
   font-size: 1rem;
   margin-bottom: 1rem;
 }
+
+/* BLOG */
+
+//Pixel value taken from old Kubernetes site. X-axis adjusted to compensate for Docsy 'main' element padding.
+section#users {
+  padding: 50px 35px;
+}
