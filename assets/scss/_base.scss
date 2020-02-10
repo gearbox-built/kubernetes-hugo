@@ -248,11 +248,18 @@ footer {
 
 /* PARTNERS */
 
-//Pixel value taken from old Kubernetes site. X-axis adjusted to compensate for Docsy 'main' element padding.
+//
 section#users {
   padding: 50px 35px;
 }
 
 main.main-section {
   margin: auto;
+  max-width: 1150px !important;
+}
+
+section .main-section, header .main-section, footer .main-section {
+  @media screen and (min-width: 1025px) {
+    max-width: 1200px;
+  }
 }
