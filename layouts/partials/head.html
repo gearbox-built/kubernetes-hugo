@@ -46,6 +46,7 @@
 <!-- Docsy head.html ends here -->
 
 <link rel="shortcut icon" type="image/png" href="{{ "images/favicon.png" | relURL }}">
+{{ partial "css.html" . }}
 <!-- Content for social media sharing previews -->
 <!-- Facebook uses the og: stuff, while Twitter and others use twitter: -->
 <meta name="description" content="{{ if .Params.description }}{{ .Params.description }}{{ else }}{{ .Summary }}{{ end }}">
