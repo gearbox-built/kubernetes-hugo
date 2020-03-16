@@ -6,7 +6,8 @@
 {{ $cssOpts      := cond $inServerMode $devOpts $prodOpts }}
 {{ $css          := resources.Get $sass | resources.ExecuteAsTemplate $sass . | toCSS $cssOpts }}
 {{ if $inServerMode }}
-<link rel="stylesheet" href="{{ $css.RelPermalink }}">
+<!-- Docsy styles being used -->
+<!-- <link rel="stylesheet" href="{{ $css.RelPermalink }}"> -->
 {{ else }}
 {{ $prodCss := $css | fingerprint }}
 <link rel="stylesheet" href="{{ $prodCss.RelPermalink }}" integrity="{{ $prodCss.Data.Integrity }}">
