@@ -116,6 +116,21 @@ header {
 /* FOOTER */
 footer {
   background-image: url("/images/texture.png");
+  min-height: 16rem !important;
+
+  @media only screen and (min-width: 1024px) {
+    min-height: 12rem !important;
+  }
+
+  .footer__links {
+    width: 100%;
+    margin: 0 1rem 1rem;
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
 
   small {
     color: $light-grey;

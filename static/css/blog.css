@@ -2,38 +2,33 @@
 /* possible.  When I made changes they were generally to accommodate jekyll */
 /* or to conform with the styling on the rest of k8s.io */
 
-/* UPDATE (2020/01/27) Much of these styles have been commented out to accomodate
-the switchover from the old k8s.io to a Docsy theme. As such some customizations have been
-retained, except where they may conflict with the Docsy look and feel. */
-
 
 /* Content
 ----------------------------------------------- */
-/* body {
+body {
   font: normal normal 16px 'Trebuchet MS', Trebuchet, Verdana, sans-serif;
   color: #666666;
   background: #ffffff none repeat scroll top left;
   padding: 0 0 0 0;
-}*/
-
-/* html body .region-inner {
+}
+html body .region-inner {
   min-width: 0;
   max-width: 100%;
   width: auto;
-} */
+}
 
-/* div a:link {
+div a:link {
 color: #326DE6;
-} */
+}
 
-/* div a.widget-link {
+div a.widget-link {
 color: #326DE6;
-} */
+}
 
 /* Header
 ----------------------------------------------- */
 
-/* .header-outer {
+.header-outer {
   background: transparent none repeat-x scroll 0 -400px;
   _background-image: none;
 }
@@ -55,13 +50,14 @@ color: #326DE6;
 }
 .header-inner .Header .descriptionwrapper {
   padding: 0 0;
-} */
+}
 
-/* #blog-hero {
+#blog-hero {
   background-image: url('../images/texture.png');
   background-color: #303030;
   padding-left: 50px;
 }
+
 
 header#topHeader {
   position: absolute;
@@ -116,11 +112,11 @@ div.header-try a {
   color: white;
   outline: none;
   cursor: pointer;
-} */
+}
 
 /* Tabs
 ----------------------------------------------- */
-/* .blog-title {
+.blog-title {
   clear: left
 }
 
@@ -132,10 +128,10 @@ div.header-try a {
   border-top: 1px solid #dddddd;
   border-left: 1px solid #dddddd;
   border-right: 1px solid #dddddd;
-} */
+}
 
 
-/* Pagination Links
+/* Pagination Links */
 @media (max-width: 449px) {
   div.pagination {
   position: relative;
@@ -148,11 +144,11 @@ div.header-try a {
   position: relative;
   left: 30%;
   }
-} */
+}
 
 /* Columns
 ----------------------------------------------- */
-/* .main-outer {
+.main-outer {
   border-top: 0 solid transparent;
 }
 @media (min-width: 992px) {
@@ -171,20 +167,20 @@ div.header-try a {
 }
 .fauxcolumn-right-outer .fauxcolumn-inner {
   border-left: 1px solid transparent;
-} */
+}
 
 /* Headings
 ----------------------------------------------- */
 div.widget > h2,
 div.widget h2.title {
   margin: 0 0 1em 0;
-  /* font: normal bold 11px 'Roboto', sans-serif; */
+  font: normal bold 11px 'Roboto', sans-serif;
   color: #000000;
 }
 
 /* Posts
 ----------------------------------------------- */
-/* h2.date-header {
+h2.date-header {
   font: normal bold 11px 'Roboto', Tahoma, Helvetica, FreeSans, sans-serif;
 }
 .date-header span {
@@ -254,11 +250,11 @@ h3.post-title{
   border-bottom: 1px solid #eeeeee;
   line-height: 1.6;
   font-size: 90%;
-} */
+}
 
 /* Mobile
 ----------------------------------------------- */
-/* .main-inner .column-right-outer {
+.main-inner .column-right-outer {
   width: 320px;
   margin-right: -320px;
 }
@@ -331,7 +327,7 @@ body {
   left: 0px;
   right: 310px;
   /* IE6 does not respect left and right together */
-  /* _width: expression(this.parentNode.offsetWidth -
+  _width: expression(this.parentNode.offsetWidth -
   parseInt("0px") -
   parseInt("310px") + 'px');
   }
@@ -361,31 +357,30 @@ body {
   #layout .region-inner {
     min-width: 0;
     width: auto;
-  } */
-
-  /* overwrite blog styles with specific rules to conform with site
+  }
+  /* overwrite blog styles with specific rules to conform with site */
   .blog-content ul , .blog-content li {
     list-style:initial;
     margin-left: 1em;
-  } */
+  }
 
-  /* .blog-content .PageNavigation > ul.navigation, .blog-content .PageNavigation > ul.navigation > li {
+  .blog-content .PageNavigation > ul.navigation, .blog-content .PageNavigation > ul.navigation > li {
     margin-left: auto;
-  } */
+  }
 
   /* .blog-content .pagination {
     width: inherit;
   } */
 
-  /* .button {
+  .button {
     border-radius: 6px;
     padding: 0 20px;
     line-height: 40px;
     background-color: #3371e3;
     text-decoration: none;
-  } */
+  }
 
-/* div a.button {
+div a.button {
   font-size: 16px;
 }
 
@@ -396,34 +391,33 @@ body {
 
  a:visited.button{
     color: #ffffff;
-  } */
+  }
 
 /* Nested List Indentations for Release Notes & Community Meeting Notes -- in HTML */
 
-/* ul {
+ul {
   padding: 1em;
-} */
+}
 
 /* Sidebar Icon Styles */
 .widget-link svg {
-  font-size: 2rem;
-  /* color:#326DE6; */
-  /* vertical-align: middle; */
-  /* width: 40px !important; */
+  font-size: 40px;
+  color:#326DE6;
+  vertical-align: middle;
+  width: 40px !important;
 }
 
 .widget-link div {
   display: flex;
-  padding-top: 0.75rem;
 }
 
 .widget-link .widget-link-text {
-  margin-left: 0.5rem;
+  margin-left: 6px;
 }
 
 
 /* SideNavigation Styles */
-/* .heading-year-toggle-checkbox,
+.heading-year-toggle-checkbox,
 .heading-month-toggle-checkbox{
   display: none;
 }
@@ -472,36 +466,36 @@ body {
 .heading-year-toggle-checkbox:checked + .collapsible-year-heading-label + .collapsible-year-body,
 .heading-month-toggle-checkbox:checked + .collapsible-month-heading-label + .collapsible-posts-list{
   display: block;
-} */
+}
 
 /* blog post specific styling */
-/* table.post-table ,.post-table tr, .post-table td, .post-table th {
+table.post-table ,.post-table tr, .post-table td, .post-table th {
   font-size: 20px;
   border: solid;
   border-color: black;
   border-width: .5px;
   padding: 5px;
-} */
+}
 
-/* .yaml-scale code {
+.yaml-scale code {
   font-size: small;
-} */
+}
 
-/* .inline-link a{
+.inline-link a{
   text-decoration: none;
-} */
-/* 
+}
+
 img.big-img {
   width: 100%;
-} */
+}
 
-/* .blog-content img {
+.blog-content img {
   max-width: 100%;
-} */
+}
 
-/* .blog-content .content {
+.blog-content .content {
   overflow-x: scroll;
-} */
+}
 
 /* .content img {
 max-width: 100%;
