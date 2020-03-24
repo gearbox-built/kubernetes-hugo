@@ -263,7 +263,6 @@ footer {
 
 /* PARTNERS */
 
-//
 section#users {
   padding: 50px 35px;
 }
@@ -277,4 +276,32 @@ section .main-section, header .main-section, footer .main-section {
   @media screen and (min-width: 1025px) {
     max-width: 1200px;
   }
+}
+
+/* CASE-STUDIES */
+
+section .main-section {
+  position: relative;
+  margin: auto;
+}
+
+#videoPlayer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0,0,0,0.9);
+  display: none;
+}
+
+#videoPlayer iframe {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80vw;
+  height: 45vw;
+  max-width: 142.22222222vh;
+  max-height: 80vh;
 }
