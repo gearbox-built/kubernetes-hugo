@@ -1,6 +1,6 @@
 ---
-title: v1.16
+title: v1.18
 weight: 50
 ---
 
-[Kubernetes API v1.16](/docs/reference/generated/kubernetes-api/v1.16/)
+[Kubernetes API v1.18](/docs/reference/generated/kubernetes-api/v1.18/)

@@ -151,14 +151,19 @@ spec:
 
 #### CSI Migration
 
-{{< feature-state for_k8s_version="v1.14" state="alpha" >}}
+{{< feature-state for_k8s_version="v1.17" state="beta" >}}
 
 The CSI Migration feature for awsElasticBlockStore, when enabled, shims all plugin operations
 from the existing in-tree plugin to the `ebs.csi.aws.com` Container
 Storage Interface (CSI) Driver. In order to use this feature, the [AWS EBS CSI
 Driver](https://github.com/kubernetes-sigs/aws-ebs-csi-driver)
 must be installed on the cluster and the `CSIMigration` and `CSIMigrationAWS`
-Alpha features must be enabled.
+Beta features must be enabled.
+
+#### CSI Migration Complete
+{{< feature-state for_k8s_version="v1.17" state="alpha" >}}
+
+To turn off the awsElasticBlockStore storage plugin from being loaded by controller manager and kubelet, you need to set this feature flag to true. This requires `ebs.csi.aws.com` Container Storage Interface (CSI) driver being installed on all worker nodes.
 
 ### azureDisk {#azuredisk}
 
@@ -479,14 +484,14 @@ spec:
 
 #### CSI Migration
 
-{{< feature-state for_k8s_version="v1.14" state="alpha" >}}
+{{< feature-state for_k8s_version="v1.17" state="beta" >}}
 
 The CSI Migration feature for GCE PD, when enabled, shims all plugin operations
 from the existing in-tree plugin to the `pd.csi.storage.gke.io` Container
 Storage Interface (CSI) Driver. In order to use this feature, the [GCE PD CSI
 Driver](https://github.com/kubernetes-sigs/gcp-compute-persistent-disk-csi-driver)
 must be installed on the cluster and the `CSIMigration` and `CSIMigrationGCE`
-Alpha features must be enabled.
+Beta features must be enabled.
 
 ### gitRepo (deprecated) {#gitrepo}
 
@@ -600,6 +605,38 @@ spec:
       type: Directory
 ```
 
+{{< caution >}}
+It should be noted that the `FileOrCreate` mode does not create the parent directory of the file. If the parent directory of the mounted file does not exist, the pod fails to start. To ensure that this mode works, you can try to mount directories and files separately, as shown below.
+{{< /caution >}}
+
+#### Example Pod FileOrCreate
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: test-webserver
+spec:
+  containers:
+  - name: test-webserver
+    image: k8s.gcr.io/test-webserver:latest
+    volumeMounts:
+    - mountPath: /var/local/aaa
+      name: mydir
+    - mountPath: /var/local/aaa/1.txt
+      name: myfile
+  volumes:
+  - name: mydir
+    hostPath:
+      # Ensure the file directory is created.
+      path: /var/local/aaa
+      type: DirectoryOrCreate
+  - name: myfile
+    hostPath:
+      path: /var/local/aaa/1.txt
+      type: FileOrCreate
+```
+
 ### iscsi {#iscsi}
 
 An `iscsi` volume allows an existing iSCSI (SCSI over IP) volume to be mounted
@@ -652,7 +689,6 @@ metadata:
 spec:
   capacity:
     storage: 100Gi
-  # volumeMode field requires BlockVolume Alpha feature gate to be enabled.
   volumeMode: Filesystem
   accessModes:
   - ReadWriteOnce
@@ -674,9 +710,8 @@ PersistentVolume `nodeAffinity` is required when using local volumes. It enables
 the Kubernetes scheduler to correctly schedule Pods using local volumes to the
 correct node.
 
-PersistentVolume `volumeMode` can now be set to "Block" (instead of the default
-value "Filesystem") to expose the local volume as a raw block device. The
-`volumeMode` field requires `BlockVolume` Alpha feature gate to be enabled.
+PersistentVolume `volumeMode` can be set to "Block" (instead of the default
+value "Filesystem") to expose the local volume as a raw block device.
 
 When using local volumes, it is recommended to create a StorageClass with
 `volumeBindingMode` set to `WaitForFirstConsumer`. See the
@@ -1154,7 +1189,7 @@ spec:
 
 ### Using subPath with expanded environment variables
 
-{{< feature-state for_k8s_version="v1.15" state="beta" >}}
+{{< feature-state for_k8s_version="v1.17" state="stable" >}}
 
 
 Use the `subPathExpr` field to construct `subPath` directory names from Downward API environment variables.
@@ -1299,19 +1334,13 @@ persistent volume:
 
 #### CSI raw block volume support
 
-{{< feature-state for_k8s_version="v1.14" state="beta" >}}
+{{< feature-state for_k8s_version="v1.18" state="stable" >}}
 
-Starting with version 1.11, CSI introduced support for raw block volumes, which
-relies on the raw block volume feature that was introduced in a previous version of
-Kubernetes.  This feature will make it possible for vendors with external CSI drivers to
-implement raw block volumes support in Kubernetes workloads.
+Vendors with external CSI drivers can implement raw block volumes support
+in Kubernetes workloads.
 
-CSI block volume support is feature-gated, but enabled by default. The two
-feature gates which must be enabled for this feature are `BlockVolume` and
-`CSIBlockVolume`.
-
-Learn how to
-[setup your PV/PVC with raw block volume support](/docs/concepts/storage/persistent-volumes/#raw-block-volume-support).
+You can [setup your PV/PVC with raw block volume support](/docs/concepts/storage/persistent-volumes/#raw-block-volume-support)
+as usual, without any CSI specific changes.
 
 #### CSI ephemeral volumes
 

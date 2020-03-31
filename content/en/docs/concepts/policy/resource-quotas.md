@@ -37,6 +37,9 @@ Resource quotas work like this:
   the `LimitRanger` admission controller to force defaults for pods that make no compute resource requirements.
   See the [walkthrough](/docs/tasks/administer-cluster/quota-memory-cpu-namespace/) for an example of how to avoid this problem.
 
+The name of a `ResourceQuota` object must be a valid
+[DNS subdomain name](/docs/concepts/overview/working-with-objects/names#dns-subdomain-names).
+
 Examples of policies that could be created using namespaces and quotas are:
 
 - In a cluster with a capacity of 32 GiB RAM, and 16 cores, let team A use 20 GiB and 10 cores,
@@ -376,7 +379,7 @@ pods        0     10
 * `Exist`
 * `DoesNotExist`
 
-## Requests vs Limits
+## Requests compared to Limits {#requests-vs-limits}
 
 When allocating compute resources, each container may specify a request and a limit value for either CPU or memory.
 The quota can be configured to quota either value.
@@ -537,12 +540,33 @@ With this mechanism, operators will be able to restrict usage of certain high pr
 
 To enforce this, kube-apiserver flag `--admission-control-config-file` should be used to pass path to the following configuration file:
 
+{{< tabs name="example1" >}}
+{{% tab name="apiserver.config.k8s.io/v1" %}}
 ```yaml
+apiVersion: apiserver.config.k8s.io/v1
+kind: AdmissionConfiguration
+plugins:
+- name: "ResourceQuota"
+  configuration:
+    apiVersion: apiserver.config.k8s.io/v1
+    kind: ResourceQuotaConfiguration
+    limitedResources:
+    - resource: pods
+      matchScopes:
+      - scopeName: PriorityClass 
+        operator: In
+        values: ["cluster-services"]
+```
+{{% /tab %}}
+{{% tab name="apiserver.k8s.io/v1alpha1" %}}
+```yaml
+# Deprecated in v1.17 in favor of apiserver.config.k8s.io/v1
 apiVersion: apiserver.k8s.io/v1alpha1
 kind: AdmissionConfiguration
 plugins:
 - name: "ResourceQuota"
   configuration:
+    # Deprecated in v1.17 in favor of apiserver.config.k8s.io/v1, ResourceQuotaConfiguration
     apiVersion: resourcequota.admission.k8s.io/v1beta1
     kind: Configuration
     limitedResources:
@@ -552,6 +576,8 @@ plugins:
         operator: In
         values: ["cluster-services"]
 ```
+{{% /tab %}}
+{{< /tabs >}}
 
 Now, "cluster-services" pods will be allowed in only those namespaces where a quota object with a matching `scopeSelector` is present.
 For example:

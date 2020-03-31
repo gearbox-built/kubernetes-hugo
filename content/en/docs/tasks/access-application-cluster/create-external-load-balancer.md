@@ -127,10 +127,12 @@ IP and may cause a second hop to another node, but should have good overall
 load-spreading. Local preserves the client source IP and avoids a second hop
 for LoadBalancer and NodePort type services, but risks potentially imbalanced
 traffic spreading.
-* `service.spec.healthCheckNodePort` - specifies the health check nodePort
-(numeric port number) for the service. If not specified, `healthCheckNodePort` is
-created by the service API backend with the allocated `nodePort`. It will use the
-user-specified `nodePort` value if specified by the client. It only has an
+* `service.spec.healthCheckNodePort` - specifies the health check node port
+(numeric port number) for the service. If `healthCheckNodePort` isn't specified,
+the service controller allocates a port from your cluster's NodePort range. You
+can configure that range by setting an API server command line option,
+`--service-node-port-range`. It will use the
+user-specified `healthCheckNodePort` value if specified by the client. It only has an
 effect when `type` is set to LoadBalancer and `externalTrafficPolicy` is set
 to Local.
 
@@ -154,6 +156,8 @@ spec:
 
 ## Garbage Collecting Load Balancers
 
+{{< feature-state for_k8s_version="v1.17" state="stable" >}}
+
 In usual case, the correlating load balancer resources in cloud provider should
 be cleaned up soon after a LoadBalancer type Service is deleted. But it is known
 that there are various corner cases where cloud resources are orphaned after the
@@ -166,10 +170,6 @@ a finalizer named `service.kubernetes.io/load-balancer-cleanup`.
 The finalizer will only be removed after the load balancer resource is cleaned up.
 This prevents dangling load balancer resources even in corner cases such as the
 service controller crashing.
-
-This feature is beta and enabled by default since Kubernetes v1.16. You can also
-enable it in v1.15 (alpha) via the [feature gate](/docs/reference/command-line-tools-reference/feature-gates/)
-`ServiceLoadBalancerFinalizer`.
 
 ## External Load Balancer Providers
 
