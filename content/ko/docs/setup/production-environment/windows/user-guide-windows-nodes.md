@@ -137,12 +137,6 @@ v1.14 이후의 최신 바이너리를 [https://github.com/kubernetes/kubernetes
     kubectl apply -f kube-flannel.yml
     ```
 
-    다음은 플라넬 파드는 리눅스 기반이라 [여기](https://github.com/Microsoft/SDN/blob/1d5c055bb195fecba07ad094d2d7c18c188f9d2d/Kubernetes/flannel/l2bridge/manifests/node-selector-patch.yml) 나온 노드 셀렉터 패치를 플라넬 데몬셋 파드에 적용한다.
-
-    ```bash
-    kubectl patch ds/kube-flannel-ds-amd64 --patch "$(cat node-selector-patch.yml)" -n=kube-system
-    ```
-
     몇 분 뒤에 플라넬 파드 네트워크가 배포되었다면, 모든 파드에서 운영 중인 것을 확인할 수 있다.
 
     ```bash
@@ -251,7 +245,7 @@ v1.14 이후의 최신 바이너리를 [https://github.com/kubernetes/kubernetes
 
 1. 컨테이너와 쿠버네티스를 설치 (시스템 재시작 필요)
 
-기존에 내려받은[KubeCluster.ps1](https://github.com/kubernetes-sigs/sig-windows-tools/blob/master/kubeadm/v1.15.0/KubeCluster.ps1) 스크립트를 사용해서 쿠버네티스를 윈도우 서버 컨테이너 호스트에 설치한다.
+기존에 내려받은 [KubeCluster.ps1](https://github.com/kubernetes-sigs/sig-windows-tools/blob/master/kubeadm/KubeCluster.ps1) 스크립트를 사용해서 쿠버네티스를 윈도우 서버 컨테이너 호스트에 설치한다.
 
   ```PowerShell
     .\KubeCluster.ps1 -ConfigFile .\Kubeclustervxlan.json -install 
@@ -282,7 +276,7 @@ v1.14 이후의 최신 바이너리를 [https://github.com/kubernetes/kubernetes
 
 이 섹션에서는 클러스터를 구성하기 위해서 [쿠버네티스가 설치된 윈도우 노드](#윈도우-노드-준비하기)를 기존의 (리눅스) 컨트롤 플레인에 참여시키는 방법을 다룬다.
 
-앞서 내려받은 [KubeCluster.ps1](https://github.com/kubernetes-sigs/sig-windows-tools/blob/master/kubeadm/v1.15.0/KubeCluster.ps1) 스크립트를 사용해서 윈도우 노드를 클러스터에 참여시킨다.
+앞서 내려받은 [KubeCluster.ps1](https://github.com/kubernetes-sigs/sig-windows-tools/blob/master/kubeadm/KubeCluster.ps1) 스크립트를 사용해서 윈도우 노드를 클러스터에 참여시킨다.
 
   ```PowerShell
     .\KubeCluster.ps1 -ConfigFile .\Kubeclustervxlan.json -join 
@@ -297,7 +291,7 @@ v1.14 이후의 최신 바이너리를 [https://github.com/kubernetes/kubernetes
 
 본 단계는 다음의 행위를 수행한다.
 
-1. 컨트롤 플레인("마스터") 노드에 SSH로 접속해서 [Kubeconfig 파일](/docs/concepts/configuration/organize-cluster-access-kubeconfig/)을 얻어온다.
+1. 컨트롤 플레인("마스터") 노드에 SSH로 접속해서 [Kubeconfig 파일](/ko/docs/concepts/configuration/organize-cluster-access-kubeconfig/)을 얻어온다.
 1. kubelet을 윈도우 서비스로 등록한다.
 1. CNI 네트워크 플러그인을 구성한다.
 1. 선택된 네트워크 인터페이스 상에서 HNS 네트워크를 생성한다.
@@ -317,7 +311,7 @@ kubectl get nodes
 #### 윈도우 노드를 쿠버네티스 클러스터에서 제거하기
 이 섹션에서는 윈도우 노드를 쿠버네티스 클러스터에서 제거하는 방법을 다룬다.
 
-앞서 내려받은 [KubeCluster.ps1](https://github.com/kubernetes-sigs/sig-windows-tools/blob/master/kubeadm/v1.15.0/KubeCluster.ps1) 스크립트를 사용해서 클러스터에서 윈도우 노드를 제거한다.
+앞서 내려받은 [KubeCluster.ps1](https://github.com/kubernetes-sigs/sig-windows-tools/blob/master/kubeadm/KubeCluster.ps1) 스크립트를 사용해서 클러스터에서 윈도우 노드를 제거한다.
 
   ```PowerShell
     .\KubeCluster.ps1 -ConfigFile .\Kubeclustervxlan.json -reset 
@@ -334,7 +328,7 @@ kubectl get nodes
 1. 등록된 모든 쿠버네티스 서비스(flanneld, kubelet, kube-proxy)를 해지한다.
 1. 쿠버네티스 바이너리(kube-proxy.exe, kubelet.exe, flanneld.exe, kubeadm.exe)를 모두 삭제한다.
 1. CNI 네트워크 플러그인 바이너리를 모두 삭제한다.
-1. 쿠버네티스 클러스터에 접근하기 위한 [Kubeconfig 파일](/docs/concepts/configuration/organize-cluster-access-kubeconfig/)을 삭제한다.
+1. 쿠버네티스 클러스터에 접근하기 위한 [Kubeconfig 파일](/ko/docs/concepts/configuration/organize-cluster-access-kubeconfig/)을 삭제한다.
 
 
 ### 퍼블릭 클라우드 제공자

@@ -13,7 +13,7 @@ weight: 40
 {{% capture body %}}
 ## Initコンテナを理解する
 
-単一の[Pod](/docs/concepts/workloads/pods/pod-overview/)は、Pod内に複数のコンテナを稼働させることができますが、Initコンテナもまた、アプリケーションコンテナが稼働する前に1つまたは複数稼働できます。
+単一の[Pod](/ja/docs/concepts/workloads/pods/pod-overview/)は、Pod内に複数のコンテナを稼働させることができますが、Initコンテナもまた、アプリケーションコンテナが稼働する前に1つまたは複数稼働できます。
 
 Initコンテナは下記の項目をのぞいて、通常のコンテナと全く同じものとなります。
 
@@ -57,7 +57,7 @@ Initコンテナはアプリケーションコンテナのイメージとは分�
 * ボリュームにあるgitリポジトリをクローンします。
 * メインのアプリケーションコンテナのための設定ファイルを動的に生成するために、いくつかの値を設定ファイルに移してテンプレートツールを稼働させます。例えば、設定ファイルにそのPodのPOD_IPを移して、Jinjaを使ってメインのアプリケーションコンテナの設定ファイルを生成します。
 
-さらに詳細な使用例は、[StatefulSetsのドキュメント](/docs/concepts/workloads/controllers/statefulset/)と[Production Pods guide](/docs/tasks/configure-pod-container/configure-pod-initialization/)にまとまっています。
+さらに詳細な使用例は、[StatefulSetsのドキュメント](/ja/docs/concepts/workloads/controllers/statefulset/)と[Production Pods guide](/docs/tasks/configure-pod-container/configure-pod-initialization/)にまとまっています。
 
 ### Initコンテナの使用
 
@@ -76,12 +76,12 @@ metadata:
         {
             "name": "init-myservice",
             "image": "busybox:1.28",
-            "command": ["sh", "-c", "until nslookup myservice; do echo waiting for myservice; sleep 2; done;"]
+            "command": ['sh', '-c', "until nslookup myservice.$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace).svc.cluster.local; do echo waiting for myservice; sleep 2; done"]
         },
         {
             "name": "init-mydb",
             "image": "busybox:1.28",
-            "command": ["sh", "-c", "until nslookup mydb; do echo waiting for mydb; sleep 2; done;"]
+            "command": ['sh', '-c', "until nslookup mydb.$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace).svc.cluster.local; do echo waiting for mydb; sleep 2; done"]
         }
     ]'
 spec:
@@ -91,7 +91,7 @@ spec:
     command: ['sh', '-c', 'echo The app is running! && sleep 3600']
 ```
 
-古いアノテーション構文がKubernetes1.6と1.7において有効ですが、1.6では新しい構文にも対応しています。Kubernetes1.8以降では新しい構文はを使用する必要があります。KubernetesではInitコンテナの宣言を`spec`に移行させました。
+古いアノテーション構文がKubernetes1.6と1.7において有効ですが、1.6では新しい構文にも対応しています。Kubernetes1.8以降では新しい構文を使用する必要があります。KubernetesではInitコンテナの宣言を`spec`に移行させました。
 
 ```yaml
 apiVersion: v1
@@ -219,7 +219,7 @@ myapp-pod   1/1       Running   0          9m
 
 ## Initコンテナのふるまいに関する詳細
 
-単一のPodが起動している間、ネットワークとボリュームが初期化されたのちに、Initコンテナは順番に起動されます。各Initコンテナは次のInitコンテナが起動する前に完了しなくてはなりません。もしあるInitコンテナがランタイムもしくはエラーにより起動失敗した場合、そのPodの`restartPolicy`の値をもとにリトライされます。しかし、もしPodの`retartPolicy`が`Always`に設定されていた場合、そのInitコンテナの`restartPolicy`は`OnFailure`となります。
+単一のPodが起動している間、ネットワークとボリュームが初期化されたのちに、Initコンテナは順番に起動されます。各Initコンテナは次のInitコンテナが起動する前に完了しなくてはなりません。もしあるInitコンテナがランタイムもしくはエラーにより起動失敗した場合、そのPodの`restartPolicy`の値をもとにリトライされます。しかし、もしPodの`restartPolicy`が`Always`に設定されていた場合、そのInitコンテナの`restartPolicy`は`OnFailure`となります。
 
 Podは全てのInitコンテナが完了するまで`Ready`状態となりません。Initコンテナ上のポートはServiceによって集約されません。初期化中のPodのステータスは`Pending`となりますが、`Initializing`という値はtrueとなります。
 

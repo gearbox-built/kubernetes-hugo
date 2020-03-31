@@ -29,7 +29,7 @@ Kubernetes 抽象出 `Volume` 对象来解决这两个问题。
 Familiarity with [Pods](/docs/user-guide/pods) is suggested.
 -->
 
-阅读本文前建议您熟悉一下 [Pods](/docs/user-guide/pods)。
+阅读本文前建议您熟悉一下 [Pods](/docs/user-guide/pods)。 
 
 {{% /capture %}}
 
@@ -728,7 +728,6 @@ spec:
       pdName: my-data-disk
       fsType: ext4
 ```
-
 <!--
 #### Regional Persistent Disks
 -->
@@ -987,6 +986,39 @@ spec:
       path: /data
       # this field is optional
       type: Directory
+```
+
+{{< caution >}}
+<!-- It should be noted that the `FileOrCreate` mode does not create the parent directory of the file. If the parent directory of the mounted file does not exist, the pod fails to start. To ensure that this mode works, you can try to mount directories and files separately, as shown below. -->
+应当注意,`FileOrCreate` 类型不会负责创建文件的父目录。如果挂载挂载文件的父目录不存在，pod 启动会失败。为了确保这种 `type` 能够工作，可以尝试把文件和它对应的目录分开挂载，如下所示：
+{{< /caution >}}
+
+#### FileOrCreate pod 示例
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: test-webserver
+spec:
+  containers:
+  - name: test-webserver
+    image: k8s.gcr.io/test-webserver:latest
+    volumeMounts:
+    - mountPath: /var/local/aaa
+      name: mydir
+    - mountPath: /var/local/aaa/1.txt
+      name: myfile
+  volumes:
+  - name: mydir
+    hostPath:
+      # 确保文件所在目录成功创建。
+      path: /var/local/aaa
+      type: DirectoryOrCreate
+  - name: myfile
+    hostPath:
+      path: /var/local/aaa/1.txt
+      type: FileOrCreate
 ```
 
 ### iscsi {#iscsi}
@@ -1322,7 +1354,6 @@ spec:
               path: my-group/my-password
               mode: 511
 ```
-
 <!--
 Each projected volume source is listed in the spec under `sources`. The
 parameters are nearly the same with two exceptions:
@@ -1489,7 +1520,7 @@ GitHub project has [instructions](https://github.com/quobyte/quobyte-csi#quobyte
 
 Quobyte 支持{{< glossary_tooltip text="容器存储接口" term_id="csi" >}}。
 推荐使用 CSI 插件以在 Kubernetes 中使用 Quobyte 卷。
-Quobyte 的 GitHub 项目具有[说明(https://github.com/quobyte/quobyte/quobyte-csi#quobyte-csi)以及使用示例来部署 CSI 的 Quobyte。
+Quobyte 的 GitHub 项目具有[说明](https://github.com/quobyte/quobyte-csi#quobyte-csi)以及使用示例来部署 CSI 的 Quobyte。
 
 ### rbd {#rbd}
 
@@ -2369,7 +2400,7 @@ Edit your Docker's `systemd` service file.  Set `MountFlags` as follows:
 MountFlags=shared
 ```
 <!--
-Or, remove `MountFlags=slave` if present.  Then restart the Docker daemon:
+Or, remove `MountFlags=slave` if present. Then restart the Docker daemon:
 -->
 或者，如果存在 `MountFlags=slave` 就删除掉。然后重启 Docker 守护进程：
 
@@ -2386,5 +2417,5 @@ sudo systemctl restart docker
 * Follow an example of [deploying WordPress and MySQL with Persistent Volumes](/docs/tutorials/stateful-application/mysql-wordpress-persistent-volume/).
 -->
 
-* 参考[使用持久卷部署 WordPress 和 MySQL](/docs/tutorials/stateful-application/mysqlwordpress-persistent-volume/) 示例。
+* 参考[使用持久卷部署 WordPress 和 MySQL](/zh/docs/tutorials/stateful-application/mysql-wordpress-persistent-volume/) 示例。
 {{% /capture %}}

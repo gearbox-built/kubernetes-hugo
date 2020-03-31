@@ -21,7 +21,7 @@ card:
 * Redis 마스터를 시작
 * Redis 슬레이브를 시작
 * 방명록 프론트엔드를 시작
-* 프론트엔드 서비스를 노출시키고 확인
+* 프론트엔드 서비스를 노출하고 확인
 * 정리 하기
 {{% /capture %}}
 
@@ -46,7 +46,7 @@ card:
 {{< codenew file="application/guestbook/redis-master-deployment.yaml" >}}
 
 1. 매니페스트 파일을 다운로드한 디렉토리에서 터미널 창을 시작한다.
-1. `redis-master-deployment.yaml` 파일을 통해 Redis 마스터의 디플로이먼트에 적용시킨다.
+1. `redis-master-deployment.yaml` 파일을 통해 Redis 마스터의 디플로이먼트에 적용한다.
 
       ```shell
       kubectl apply -f https://k8s.io/examples/application/guestbook/redis-master-deployment.yaml
@@ -77,11 +77,11 @@ POD-NAME을 해당 파드 이름으로 수정해야 한다.
 
 ### Redis 마스터 서비스 생성하기
 
-방명록 애플리케이션에서 데이터를 쓰려면 Redis 마스터와 통신해야 한다. Redis 마스터 파드로 트래픽을 프록시하려면 [서비스](/docs/concepts/services-networking/service/)를 적용해야 한다. 서비스는 파드에 접근하기 위한 정책을 정의한다.
+방명록 애플리케이션에서 데이터를 쓰려면 Redis 마스터와 통신해야 한다. Redis 마스터 파드로 트래픽을 프록시하려면 [서비스](/ko/docs/concepts/services-networking/service/)를 적용해야 한다. 서비스는 파드에 접근하기 위한 정책을 정의한다.
 
 {{< codenew file="application/guestbook/redis-master-service.yaml" >}}
 
-1. `redis-master-service.yaml` 파일을 통해 Redis 마스터 서비스에 적용시킨다.
+1. `redis-master-service.yaml` 파일을 통해 Redis 마스터 서비스에 적용한다.
 
       ```shell
       kubectl apply -f https://k8s.io/examples/application/guestbook/redis-master-service.yaml
@@ -118,7 +118,7 @@ Redis 마스터는 단일 파드이지만, 복제된 Redis 슬레이브를 추�
 
 {{< codenew file="application/guestbook/redis-slave-deployment.yaml" >}}
 
-1. `redis-slave-deployment.yaml` 파일을 통해 Redis 슬레이브의 디플로이먼트에 적용시킨다.
+1. `redis-slave-deployment.yaml` 파일을 통해 Redis 슬레이브의 디플로이먼트에 적용한다.
 
       ```shell
       kubectl apply -f https://k8s.io/examples/application/guestbook/redis-slave-deployment.yaml
@@ -145,7 +145,7 @@ Redis 마스터는 단일 파드이지만, 복제된 Redis 슬레이브를 추�
 
 {{< codenew file="application/guestbook/redis-slave-service.yaml" >}}
 
-1. `redis-slave-service.yaml` 파일을 통해 Redis 슬레이브 서비스에 적용시킨다.
+1. `redis-slave-service.yaml` 파일을 통해 Redis 슬레이브 서비스에 적용한다.
 
       ```shell
       kubectl apply -f https://k8s.io/examples/application/guestbook/redis-slave-service.yaml
@@ -166,7 +166,7 @@ Redis 마스터는 단일 파드이지만, 복제된 Redis 슬레이브를 추�
       redis-slave    ClusterIP   10.0.0.223   <none>        6379/TCP   6s
       ```
 
-## 방명록 프론트엔드를 설정하고 노출시키기
+## 방명록 프론트엔드를 설정하고 노출하기
 
 방명록 애플리케이션에는 PHP로 작성된 HTTP 요청을 처리하는 웹 프론트엔드가 있다. 쓰기 요청을 위한 `redis-master` 서비스와 읽기 요청을 위한 `redis-slave` 서비스에 연결하도록 설정된다.
 
@@ -174,7 +174,7 @@ Redis 마스터는 단일 파드이지만, 복제된 Redis 슬레이브를 추�
 
 {{< codenew file="application/guestbook/frontend-deployment.yaml" >}}
 
-1. `frontend-deployment.yaml` 파일을 통해 프론트엔드의 디플로이먼트에 적용시킨다.
+1. `frontend-deployment.yaml` 파일을 통해 프론트엔드의 디플로이먼트에 적용한다.
 
       ```shell
       kubectl apply -f https://k8s.io/examples/application/guestbook/frontend-deployment.yaml
@@ -197,7 +197,7 @@ Redis 마스터는 단일 파드이지만, 복제된 Redis 슬레이브를 추�
 
 ### 프론트엔드 서비스 생성하기
 
-서비스의 기본 유형은 [ClusterIP](/docs/concepts/services-networking/service/#publishing-services---service-types)이기 때문에 적용한 redis-slave 및 redis-master 서비스는 컨테이너 클러스터 내에서만 접근할 수 있다. `ClusterIP`는 서비스가 가리키는 파드 집합에 대한 단일 IP 주소를 제공한다. 이 IP 주소는 클러스터 내에서만 접근할 수 있다.
+서비스의 기본 유형은 [ClusterIP](/ko/docs/concepts/services-networking/service/#publishing-services-service-types)이기 때문에 적용한 redis-slave 및 redis-master 서비스는 컨테이너 클러스터 내에서만 접근할 수 있다. `ClusterIP`는 서비스가 가리키는 파드 집합에 대한 단일 IP 주소를 제공한다. 이 IP 주소는 클러스터 내에서만 접근할 수 있다.
 
 게스트가 방명록에 접근할 수 있도록 하려면, 외부에서 볼 수 있도록 프론트엔드 서비스를 구성해야 한다. 그렇게 하면 클라이언트가 컨테이너 클러스터 외부에서 서비스를 요청할 수 있다. Minikube는 `NodePort`를 통해서만 서비스를 노출할 수 있다.
 
@@ -362,7 +362,7 @@ Google Compute Engine 또는 Google Kubernetes Engine과 같은 일부 클라우
 * [ELK 로깅과 모니터링](/ko/docs/tutorials/stateless-application/guestbook-logs-metrics-with-elk/)을 방명록 애플리케이션에 추가하기
 * [쿠버네티스 기초](/ko/docs/tutorials/kubernetes-basics/) 튜토리얼을 완료
 * [MySQL과 Wordpress을 위한 퍼시스턴트 볼륨](/ko/docs/tutorials/stateful-application/mysql-wordpress-persistent-volume/#visit-your-new-wordpress-blog)을 사용하여 블로그 생성하는데 쿠버네티스 이용하기
-* [애플리케이션 접속](/docs/concepts/services-networking/connect-applications-service/)에 대해 더 알아보기
+* [애플리케이션 접속](/ko/docs/concepts/services-networking/connect-applications-service/)에 대해 더 알아보기
 * [자원 관리](/docs/concepts/cluster-administration/manage-deployment/#using-labels-effectively)에 대해 더 알아보기
 {{% /capture %}}
 
