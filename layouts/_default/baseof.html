@@ -1,13 +1,21 @@
 <!doctype html>
-<html lang="{{ .Site.Language.Lang }}" class="no-js">
+<html lang="{{ .Site.Language.Lang }}" class="{{.Params.class}} no-js">
   <head>
     {{ partial "head.html" . }}
   </head>
   <body class="td-{{ .Kind }}">
     <header>
       {{ partial "navbar.html" . }}
+      <section class="header-hero text-center text-white font-bold pb-4">
+        <h1>
+          {{ $sectionHeading := .Site.GetPage "section" .Section }}
+          {{ with $sectionHeading }}
+            {{ .Title }}
+          {{ end }}
+        </h1>
+      </section>
     </header>
-    <div class="td-default td-outer">
+    <div class="td-outer">
       <main role="main" class="td-main">
         {{ block "main" . }}{{ end }}
       </main>
