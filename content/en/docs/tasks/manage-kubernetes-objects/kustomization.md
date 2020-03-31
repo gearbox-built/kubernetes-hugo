@@ -791,6 +791,12 @@ kubectl get -k ./
 kubectl describe -k ./
 ```
 
+Run the following command to compare the Deployment object `dev-my-nginx` against the state that the cluster would be in if the manifest was applied:
+
+```shell
+kubectl diff -k ./
+```
+
 Run the following command to delete the Deployment object `dev-my-nginx`:
 
 ```shell
@@ -814,8 +820,8 @@ deployment.apps "dev-my-nginx" deleted
 | bases                 | []string                                                                                                     | Each entry in this list should resolve to a directory containing a kustomization.yaml file |
 | patchesStrategicMerge | []string                                                                                                     | Each entry in this list should resolve a strategic merge patch of a Kubernetes object |
 | patchesJson6902       | [][Json6902](https://github.com/kubernetes-sigs/kustomize/blob/release-kustomize-v4.0/api/types/patchjson6902.go#L8)             | Each entry in this list should resolve to a Kubernetes object and a Json Patch     |
-| vars                  | [][Var](https://github.com/kubernetes-sigs/kustomize/blob/release-kustomize-v4.0/api/types/var.go#L19)                       | Each entry is to capture text from one resource's field                            |
-| images                | [][Image](https://github.com/kubernetes-sigs/kustomize/blob/release-kustomize-v4.0/api/types/image.go#L8)                   | Each entry is to modify the name, tags and/or digest for one image without creating patches |
+| vars                  | [][Var](https://github.com/kubernetes-sigs/kustomize/blob/master/api/types/var.go#L31)                       | Each entry is to capture text from one resource's field                            |
+| images                | [][Image](https://github.com/kubernetes-sigs/kustomize/tree/master/api/types/image.go#L23)                   | Each entry is to modify the name, tags and/or digest for one image without creating patches |
 | configurations        | []string                                                                                                     | Each entry in this list should resolve to a file containing [Kustomize transformer configurations](https://github.com/kubernetes-sigs/kustomize/tree/master/examples/transformerconfigs) |
 | crds                  | []string                                                                                                     | Each entry in this list should resolve to an OpenAPI definition file for Kubernetes types |
 

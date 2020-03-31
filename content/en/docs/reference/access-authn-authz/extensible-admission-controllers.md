@@ -114,7 +114,7 @@ webhooks:
     service:
       namespace: "example-namespace"
       name: "example-service"
-    caBundle: "Ci0tLS0tQk...<base64-encoded PEM bundle containing the CA that signed the webhook's serving certificate>...tLS0K"
+    caBundle: "Ci0tLS0tQk...<`caBundle` is a PEM encoded CA bundle which will be used to validate the webhook's server certificate.>...tLS0K"
   admissionReviewVersions: ["v1", "v1beta1"]
   sideEffects: None
   timeoutSeconds: 5
@@ -139,7 +139,7 @@ webhooks:
     service:
       namespace: "example-namespace"
       name: "example-service"
-    caBundle: "Ci0tLS0tQk...<base64-encoded PEM bundle containing the CA that signed the webhook's serving certificate>...tLS0K"
+    caBundle: "Ci0tLS0tQk...<`caBundle` is a PEM encoded CA bundle which will be used to validate the webhook's server certificate>...tLS0K"
   admissionReviewVersions: ["v1beta1"]
   timeoutSeconds: 5
 ```
@@ -184,24 +184,48 @@ the webhooks. There are three steps to complete the configuration.
   (yes, the same schema that's used by kubectl), so the field name is
   `kubeConfigFile`. Here is an example admission control configuration file:
 
-    ```yaml
-    apiVersion: apiserver.k8s.io/v1alpha1
-    kind: AdmissionConfiguration
-    plugins:
-    - name: ValidatingAdmissionWebhook
-      configuration:
-        apiVersion: apiserver.config.k8s.io/v1alpha1
-        kind: WebhookAdmission
-        kubeConfigFile: "<path-to-kubeconfig-file>"
-    - name: MutatingAdmissionWebhook
-      configuration:
-        apiVersion: apiserver.config.k8s.io/v1alpha1
-        kind: WebhookAdmission
-        kubeConfigFile: "<path-to-kubeconfig-file>"
-    ```
+{{< tabs name="admissionconfiguration_example1" >}}
+{{% tab name="apiserver.config.k8s.io/v1" %}}
+```yaml
+apiVersion: apiserver.config.k8s.io/v1
+kind: AdmissionConfiguration
+plugins:
+- name: ValidatingAdmissionWebhook
+  configuration:
+    apiVersion: apiserver.config.k8s.io/v1
+    kind: WebhookAdmissionConfiguration
+    kubeConfigFile: "<path-to-kubeconfig-file>"
+- name: MutatingAdmissionWebhook
+  configuration:
+    apiVersion: apiserver.config.k8s.io/v1
+    kind: WebhookAdmissionConfiguration
+    kubeConfigFile: "<path-to-kubeconfig-file>"
+```
+{{% /tab %}}
+{{% tab name="apiserver.k8s.io/v1alpha1" %}}
+```yaml
+# Deprecated in v1.17 in favor of apiserver.config.k8s.io/v1
+apiVersion: apiserver.k8s.io/v1alpha1
+kind: AdmissionConfiguration
+plugins:
+- name: ValidatingAdmissionWebhook
+  configuration:
+    # Deprecated in v1.17 in favor of apiserver.config.k8s.io/v1, kind=WebhookAdmissionConfiguration
+    apiVersion: apiserver.config.k8s.io/v1alpha1
+    kind: WebhookAdmission
+    kubeConfigFile: "<path-to-kubeconfig-file>"
+- name: MutatingAdmissionWebhook
+  configuration:
+    # Deprecated in v1.17 in favor of apiserver.config.k8s.io/v1, kind=WebhookAdmissionConfiguration
+    apiVersion: apiserver.config.k8s.io/v1alpha1
+    kind: WebhookAdmission
+    kubeConfigFile: "<path-to-kubeconfig-file>"
+```
+{{% /tab %}}
+{{< /tabs >}}
 
-The schema of `admissionConfiguration` is defined
-[here](https://github.com/kubernetes/kubernetes/blob/v1.13.0/staging/src/k8s.io/apiserver/pkg/apis/apiserver/v1alpha1/types.go#L27).
+For more information about `AdmissionConfiguration`, see the
+[AdmissionConfiguration schema](https://github.com/kubernetes/kubernetes/blob/v1.17.0/staging/src/k8s.io/apiserver/pkg/apis/apiserver/v1/types.go#L27).
 See the [webhook configuration](#webhook-configuration) section for details about each config field.
 
 * In the kubeConfig file, provide the credentials:
@@ -607,6 +631,8 @@ So a webhook response to add that label would be:
 ## Webhook configuration
 
 To register admission webhooks, create `MutatingWebhookConfiguration` or `ValidatingWebhookConfiguration` API objects.
+The name of a `MutatingWebhookConfiguration` or a `ValidatingWebhookConfiguration` object must be a valid
+[DNS subdomain name](/docs/concepts/overview/working-with-objects/names#dns-subdomain-names).
 
 Each configuration can contain one or more webhooks.
 If multiple webhooks are specified in a single configuration, each should be given a unique name.
@@ -937,6 +963,7 @@ Allowed values are `Exact` or `Equivalent`.
 * `Equivalent` means a request should be intercepted if modifies a resource listed in `rules`, even via another API group or version.
 
 In the example given above, the webhook that only registered for `apps/v1` could use `matchPolicy`:
+
 * `matchPolicy: Exact` would mean the `extensions/v1beta1` request would not be sent to the webhook
 * `matchPolicy: Equivalent` means the `extensions/v1beta1` request would be sent to the webhook (with the objects converted to a version the webhook had specified: `apps/v1`)
 
@@ -944,9 +971,10 @@ Specifying `Equivalent` is recommended, and ensures that webhooks continue to in
 resources they expect when upgrades enable new versions of the resource in the API server.
 
 When a resource stops being served by the API server, it is no longer considered equivalent to other versions of that resource that are still served.
-For example, deprecated `extensions/v1beta1` deployments are scheduled to stop being served by default in v1.16.
-Once that occurs, a webhook with a `apiGroups:["extensions"], apiVersions:["v1beta1"], resources:["deployments"]` rule
-would no longer intercept deployments created via `apps/v1` APIs. For that reason, webhooks should prefer registering
+For example, `extensions/v1beta1` deployments were first deprecated and then removed (in Kubernetes v1.16).
+
+Since that removal, a webhook with a `apiGroups:["extensions"], apiVersions:["v1beta1"], resources:["deployments"]` rule
+does not intercept deployments created via `apps/v1` APIs. For that reason, webhooks should prefer registering
 for stable versions of resources.
 
 This example shows a validating webhook that intercepts modifications to deployments (no matter the API group or version),
@@ -1022,7 +1050,7 @@ to turn up in a new cluster.
 
 The scheme must be "https"; the URL must begin with "https://".
 
-Attempting to use a user or basic auth e.g. "user:password@" is not allowed.
+Attempting to use a user or basic auth (for example "user:password@") is not allowed.
 Fragments ("#...") and query parameters ("?...") are also not allowed.
 
 Here is an example of a mutating webhook configured to call a URL
@@ -1094,7 +1122,7 @@ kind: MutatingWebhookConfiguration
 webhooks:
 - name: my-webhook.example.com
   clientConfig:
-    caBundle: "Ci0tLS0tQk...<base64-encoded PEM bundle containing the CA that signed the webhook's serving certificate>...tLS0K"
+    caBundle: "Ci0tLS0tQk...<`caBundle` is a PEM encoded CA bundle which will be used to validate the webhook's server certificate>...tLS0K"
     service:
       namespace: my-service-namespace
       name: my-service-name
@@ -1110,7 +1138,7 @@ webhooks:
 Webhooks typically operate only on the content of the `AdmissionReview` sent to them.
 Some webhooks, however, make out-of-band changes as part of processing admission requests.
 
-Webhooks that make out-of-band changes ("side effects") must also have a reconcilation mechanism
+Webhooks that make out-of-band changes ("side effects") must also have a reconciliation mechanism
 (like a controller) that periodically determines the actual state of the world, and adjusts
 the out-of-band data modified by the admission webhook to reflect reality.
 This is because a call to an admission webhook does not guarantee the admitted object will be persisted as is, or at all.

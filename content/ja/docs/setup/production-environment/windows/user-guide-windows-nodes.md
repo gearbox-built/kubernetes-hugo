@@ -1,7 +1,4 @@
 ---
-reviewers:
-- michmike
-- patricklang
 title: Guide for adding Windows Nodes in Kubernetes
 content_template: templates/concept
 weight: 70
@@ -129,12 +126,6 @@ Once you have a Linux-based Kubernetes master node you are ready to choose a net
 
     ```bash
     kubectl apply -f kube-flannel.yml
-    ```
-
-    Next, since the Flannel pods are Linux-based, apply a NodeSelector patch, which can be found [here](https://github.com/Microsoft/SDN/blob/1d5c055bb195fecba07ad094d2d7c18c188f9d2d/Kubernetes/flannel/l2bridge/manifests/node-selector-patch.yml), to the Flannel DaemonSet pod:
-
-    ```bash
-    kubectl patch ds/kube-flannel-ds-amd64 --patch "$(cat node-selector-patch.yml)" -n=kube-system
     ```
 
     After a few minutes, you should see all the pods as running if the Flannel pod network was deployed.

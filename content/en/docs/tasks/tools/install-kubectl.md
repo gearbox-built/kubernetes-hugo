@@ -52,7 +52,7 @@ You must use a kubectl version that is within one minor version difference of yo
 4. Test to ensure the version you installed is up-to-date:
 
     ```
-    kubectl version
+    kubectl version --client
     ```
 
 ### Install using native package management
@@ -78,22 +78,27 @@ yum install -y kubectl
 {{< /tab >}}
 {{< /tabs >}}
 
+### Install using other package management
 
-### Install with snap
-
+{{< tabs name="other_kubectl_install" >}}
+{{% tab name="Snap" %}}
 If you are on Ubuntu or another Linux distribution that support [snap](https://snapcraft.io/docs/core/install) package manager, kubectl is available as a [snap](https://snapcraft.io/) application.
 
-1. Switch to the snap user and run the installation command:
+```shell
+snap install kubectl --classic
 
-    ```
-    sudo snap install kubectl --classic
-    ```
+kubectl version
+```
+{{% /tab %}}
+{{% tab name="Homebrew" %}}
+If you are on Linux and using [Homebrew](https://docs.brew.sh/Homebrew-on-Linux) package manager, kubectl is available for [installation](https://docs.brew.sh/Homebrew-on-Linux#install).
+```shell
+brew install kubectl
 
-2. Test to ensure the version you installed is up-to-date:
-
-    ```
-    kubectl version
-    ```
+kubectl version
+```
+{{% /tab %}}
+{{< /tabs >}}
 
 ## Install kubectl on macOS
 
@@ -127,7 +132,7 @@ If you are on Ubuntu or another Linux distribution that support [snap](https://s
 4. Test to ensure the version you installed is up-to-date:
 
     ```
-    kubectl version
+    kubectl version --client
     ```
 
 ### Install with Homebrew on macOS
@@ -148,7 +153,7 @@ If you are on macOS and using [Homebrew](https://brew.sh/) package manager, you 
 2. Test to ensure the version you installed is up-to-date:
 
     ```
-    kubectl version
+    kubectl version --client
     ```
 
 ### Install with Macports on macOS
@@ -165,7 +170,7 @@ If you are on macOS and using [Macports](https://macports.org/) package manager,
 2. Test to ensure the version you installed is up-to-date:
 
     ```
-    kubectl version
+    kubectl version --client
     ```
 
 ## Install kubectl on Windows
@@ -186,7 +191,7 @@ If you are on macOS and using [Macports](https://macports.org/) package manager,
 3. Test to ensure the version of `kubectl` is the same as downloaded:
 
     ```
-    kubectl version
+    kubectl version --client
     ```
 {{< note >}}
 [Docker Desktop for Windows](https://docs.docker.com/docker-for-windows/#kubernetes) adds its own version of `kubectl` to PATH.
@@ -211,7 +216,7 @@ If you are on Windows and using [Powershell Gallery](https://www.powershellgalle
 2. Test to ensure the version you installed is up-to-date:
 
     ```
-    kubectl version
+    kubectl version --client
     ```
 
     {{< note >}}Updating the installation is performed by rerunning the two commands listed in step 1.{{< /note >}}
@@ -234,7 +239,7 @@ To install kubectl on Windows you can use either [Chocolatey](https://chocolatey
 2. Test to ensure the version you installed is up-to-date:
 
     ```
-    kubectl version
+    kubectl version --client
     ```
 
 3. Navigate to your home directory:
@@ -276,7 +281,7 @@ You can install kubectl as part of the Google Cloud SDK.
 3. Test to ensure the version you installed is up-to-date:
 
     ```
-    kubectl version
+    kubectl version --client
     ```
 
 ## Verifying kubectl configuration 
@@ -380,6 +385,27 @@ However, the kubectl completion script depends on [**bash-completion**](https://
 there are two versions of bash-completion, v1 and v2. V1 is for Bash 3.2 (which is the default on macOS), and v2 is for Bash 4.1+. The kubectl completion script **doesn't work** correctly with bash-completion v1 and Bash 3.2. It requires **bash-completion v2** and **Bash 4.1+**. Thus, to be able to correctly use kubectl completion on macOS, you have to install and use Bash 4.1+ ([*instructions*](https://itnext.io/upgrading-bash-on-macos-7138bd1066ba)). The following instructions assume that you use Bash 4.1+ (that is, any Bash version of 4.1 or newer).
 {{< /warning >}}
 
+### Upgrade Bash
+
+The instructions here assume you use Bash 4.1+. You can check your Bash's version by running:
+
+```shell
+echo $BASH_VERSION
+```
+
+If it is too old, you can install/upgrade it using Homebrew:
+
+```shell
+brew install bash
+```
+
+Reload your shell and verify that the desired version is being used:
+
+```shell
+echo $BASH_VERSION $SHELL
+```
+
+Homebrew usually installs it at `/usr/local/bin/bash`.
 
 ### Install bash-completion
 
