@@ -91,10 +91,6 @@ header {
       left: -80px;
     }
   }
-
-  @media only screen and (min-width: 1024px) {
-
-  }
 }
 
 // Flip-Nav
@@ -135,6 +131,7 @@ footer {
   small {
     color: $light-grey;
     font-size: 0.725rem;
+
     a {
       text-decoration: inherit;
       color: inherit;
@@ -203,7 +200,8 @@ footer {
 .glossary-tooltip {
   position: relative;
   display: inline-block;
-  border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+  border-bottom: 1px dotted black;
+  /* If you want dots under the hoverable text */
   color: black;
   text-decoration: none !important;
 }
@@ -272,7 +270,9 @@ main.main-section {
   max-width: 1150px !important;
 }
 
-section .main-section, header .main-section, footer .main-section {
+section .main-section,
+header .main-section,
+footer .main-section {
   @media screen and (min-width: 1025px) {
     max-width: 1200px;
   }
@@ -291,7 +291,7 @@ section .main-section {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0,0,0,0.9);
+  background-color: rgba(0, 0, 0, 0.9);
   display: none;
 }
 
@@ -322,4 +322,416 @@ button {
   background: none;
   margin: 0;
   border: 0;
+}
+
+// ocean nodes
+$ocean-nodes-padding-Y: 60px;
+$ocean-nodes-main-margin-bottom: 60px;
+$ocean-nodes-h3-margin-bottom: 30px;
+
+// video
+$video-section-height: 200px;
+
+// features
+$features-h3-margin-bottom: 20px;
+$feature-box-div-width: 100%;
+$feature-box-margin-bottom: 0;
+$feature-box-div-margin-bottom: 40px;
+
+
+// Home-specific
+
+.td-home {
+
+  &.flip-nav,
+  &.open-nav {
+    .logo {
+      background-image: url(/images/nav_logo2.svg);
+    }
+  }
+}
+
+#hero {
+  margin-bottom: 0;
+  padding-bottom: 1px;
+
+  .main-section {
+    padding: 0 10px;
+    margin-bottom: 30px;
+  }
+
+  #vendorStrip {
+    display: none;
+  }
+}
+
+// Add logo to CNCF section
+section#cncf {
+  padding-top: 60px;
+  padding-bottom: 140px;
+  background-image: url(/images/cncf-color.svg);
+  background-position: center 100px;
+  background-repeat: no-repeat;
+  background-size: 300px;
+}
+
+
+
+// OCEAN NODES
+#oceanNodes {
+  padding-top: $ocean-nodes-padding-Y;
+  padding-bottom: $ocean-nodes-padding-Y;
+
+  a {
+    color: $blue;
+  }
+
+  .main-section {
+    margin-bottom: $ocean-nodes-padding-Y;
+    min-height: 160px;
+  }
+
+  .image-wrapper {
+    max-width: 75%;
+    margin: 0 auto 20px;
+    text-align: center;
+
+    img {
+      width: 100%;
+      max-width: 160px;
+    }
+  }
+
+  .main-section:first-child {
+    .image-wrapper {
+      max-width: 100%;
+
+      img {
+        max-width: 491px;
+      }
+    }
+  }
+
+  h3 {
+    margin-bottom: $ocean-nodes-h3-margin-bottom;
+  }
+}
+
+
+// Video thingy
+#video {
+  height: $video-section-height;
+}
+
+#video {
+  width: 100%;
+  position: relative;
+  background-position: center center;
+  background-size: cover;
+
+
+  &>.light-text {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 75%;
+    width: 575px;
+    padding-right: 80px;
+    transform: translate(-50%, -50%);
+    color: white;
+  }
+
+  h2 {
+    font-size: 32px;
+    line-height: 44px;
+    margin-bottom: 20px;
+  }
+
+  p {
+    margin-bottom: 20px;
+  }
+
+  #desktopKCButton {
+    position: relative;
+    font-size: 18px;
+    background-color: $dark-grey;
+    border-radius: 8px;
+    color: $white;
+    padding: 20px 10px 20px 10px;
+  }
+
+  #desktopShowVideoButton {
+    position: relative;
+    font-size: 24px;
+    background-color: white;
+    border-radius: 8px;
+    color: $blue;
+    padding: 15px 30px 15px 80px;
+    margin-bottom: 15px;
+
+    &:before {
+      content: "";
+      position: absolute;
+      @include pureCenter(40px);
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 10px 0 10px 20px;
+      border-color: transparent transparent transparent $blue;
+    }
+  }
+
+  #mobileShowVideoButton {
+    @include pureCenter;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: transparent;
+    border: 5px solid rgba(255, 255, 255, 0.2);
+    overflow: visible;
+
+    &:after {
+      @include pureCenter;
+      left: 40px;
+      content: "";
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 20px 0 20px 30px;
+      border-color: transparent transparent transparent #ffffff;
+    }
+  }
+}
+
+#videoPlayer {
+  @include fullScreen;
+  background-color: rgba(0, 0, 0, 0.9);
+  display: none;
+
+  iframe {
+    @include pureCenter;
+    @include maintain-aspect-ratio;
+  }
+
+  #closeButton {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    border: 2px solid transparent;
+    transition: 0.3s;
+
+    &:before,
+    &:after {
+      content: "";
+      position: absolute;
+      top: calc(50% - 1px);
+      left: 10%;
+      width: 80%;
+      height: 2px;
+      background-color: white;
+    }
+
+    &:before {
+      transform: rotate(45deg);
+    }
+
+    &:after {
+      transform: rotate(-45deg);
+    }
+
+    &:hover {
+      border-color: white;
+    }
+  }
+}
+
+// KubeWeekly
+#kubeweekly {
+  background-color: $light-grey;
+  padding-top: 60px;
+  padding-bottom: 140px;
+  background-size: auto;
+  font-family: "Roboto Mono", monospace !important;
+  font-size: 24px;
+  font-weight: bold;
+
+  h5 {
+    font-size: 20px;
+  }
+}
+
+.subscribe-button {
+  border-radius: 6px;
+  padding: 0 20px;
+  line-height: 31px;
+  color: white;
+  background-color: blue;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+// Features
+#features {
+  padding-top: 140px;
+  background-color: $light-grey;
+  background-image: url(/images/wheel.svg);
+  background-position: center 60px;
+  background-repeat: no-repeat;
+  background-size: 60px;
+}
+
+.feature-box {
+  //padding: 50px 0
+  width: 100%;
+  overflow: hidden;
+  clear: both;
+
+  h4 {
+    line-height: normal;
+    margin-bottom: 15px;
+  }
+
+  &>div:first-child {
+    float: left;
+  }
+
+  &>div:last-child {
+    float: right;
+  }
+}
+
+#features {
+  h3 {
+    margin-bottom: $features-h3-margin-bottom;
+  }
+
+  .feature-box {
+    margin-bottom: $feature-box-margin-bottom;
+
+    &>div {
+      width: $feature-box-div-width;
+      margin-bottom: $feature-box-div-margin-bottom;
+    }
+  }
+}
+
+// Talk to us
+#talkToUs {
+
+  h3,
+  h4 {
+    text-align: center;
+  }
+
+  h3 {
+    margin-bottom: 15px;
+  }
+
+  h4 {
+    line-height: normal;
+    margin-bottom: 50px;
+
+    br {
+      display: none;
+    }
+  }
+
+  #bigSocial {
+    overflow: hidden;
+
+    div {
+      width: 100%;
+      float: left;
+      padding: 30px;
+      padding-top: 110px;
+      background-position: center top;
+      background-size: auto;
+      background-repeat: no-repeat;
+    }
+
+    div:nth-child(1) {
+      background-image: url(/images/twitter_icon.png);
+    }
+
+    div:nth-child(2) {
+      background-image: url(/images/github_icon.png);
+    }
+
+    div:nth-child(3) {
+      background-image: url(/images/slack_icon.png);
+    }
+
+    div:nth-child(4) {
+      background-image: url(/images/stackoverflow_icon.png);
+    }
+
+    div+div {
+      margin-top: 20px;
+      margin-left: 0;
+    }
+
+    a {
+      display: inline-block;
+      color: $blue;
+      font-size: 24px;
+      font-weight: 400;
+      text-decoration: none;
+      margin-bottom: 15px;
+    }
+
+    a,
+    p {
+      text-align: center;
+      width: 100%;
+    }
+  }
+}
+
+.td-home {
+  #talkToUs {
+    .main-section {
+      padding: 30px 0;
+    }
+
+    h5 {
+      font-size: 20px;
+    }
+  }
+
+
+  #caseStudiesWrapper {
+    position: relative;
+    text-align: center;
+    margin-bottom: 30px;
+
+    img {
+      padding-bottom: 1rem;
+    }
+
+    div {
+      position: relative;
+      display: inline-block;
+      vertical-align: top;
+      width: 100%;
+      min-height: 230px;
+      margin-bottom: 60px;
+      padding-right: 1rem;
+      background-position: top center;
+    }
+
+    p {
+      font-size: 20px;
+    }
+
+    a {
+      position: absolute;
+      bottom: -30px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: $blue;
+      font-weight: 400;
+    }
+  }
 }
