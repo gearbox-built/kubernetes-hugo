@@ -1,0 +1,329 @@
+/* GLOBAL */
+.td-main main {
+  @media only screen and (min-width: 768px) {
+    padding-top: 2rem !important;
+  }
+
+  img {
+    max-width: 100%;
+  }
+
+  table {
+    margin-bottom: 1rem;
+  }
+}
+
+/* HEADER */
+
+header {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 8888;
+  background-color: transparent;
+  box-shadow: 0 0 0 transparent;
+  overflow: hidden;
+  text-align: center;
+}
+
+.td-navbar {
+  background: transparent !important;
+  transition: 0.3s;
+
+  .navbar-brand {
+    position: absolute;
+    margin-top: 1.5rem;
+    margin-left: 1rem;
+    width: 180px;
+    height: 88px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-image: url("/images/nav_logo.svg");
+  }
+
+  @media only screen and (max-width: 767px) {
+    margin: auto;
+    text-align: center;
+    height: 16rem;
+
+    .navbar-brand {
+      background-image: url("/images/favicon.png");
+      position: relative;
+      width: 45px;
+      height: 44px;
+    }
+  }
+}
+
+.header-hero {
+  position: relative;
+  background-color: $dark-grey;
+  background-image: url("/images/texture.png");
+  width: 100%;
+
+  @media only screen and (min-width: 767px) {
+    padding-top: 7rem;
+  }
+
+  @media only screen and (max-width: 767px) {
+    position: absolute;
+    top: 0;
+    padding: 180px 0;
+  }
+}
+
+.td-navbar-nav-scroll {
+  overflow: visible !important;
+
+  ul.navbar-nav {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+
+    li {
+      height: 10%;
+    }
+
+    .nav-item .dropdown-menu {
+      left: -80px;
+    }
+  }
+
+  @media only screen and (max-width: 1045px) {
+    font-size: .9rem;
+  }
+}
+
+// Flip-Nav
+.flip-nav header .td-navbar {
+  background-color: white !important;
+  box-shadow: 0 1px 2px $medium-grey;
+
+  .navbar-nav .nav-link {
+    color: $dark-grey;
+  }
+
+  @media only screen and (min-width: 768px) {
+    .navbar-brand {
+      background-image: url("/images/nav_logo2.svg");
+    }
+  }
+}
+
+/* FOOTER */
+footer {
+  background-image: url("/images/texture.png");
+  min-height: 16rem !important;
+
+  @media only screen and (min-width: 1024px) {
+    min-height: 12rem !important;
+  }
+
+  .footer__links {
+    width: 100%;
+    margin: 0 1rem 1rem;
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
+  small {
+    color: $light-grey;
+    font-size: 0.725rem;
+
+    a {
+      text-decoration: inherit;
+      color: inherit;
+
+      &:hover {
+        color: inherit;
+      }
+    }
+  }
+}
+
+/* SEARCH & SIDEBAR */
+
+.td-sidebar {
+  @media only screen and (min-width:768px) {
+    padding-top: 0.75rem !important;
+  }
+}
+
+.td-sidebar__inner {
+  form.td-sidebar__search {
+    input.form-control.td-search-input {
+      &::placeholder {
+        @media only screen and (max-width: 767px) {
+          color: $white;
+        }
+      }
+    }
+
+    button.td-sidebar__toggle {
+      &:hover {
+        color: $white;
+      }
+
+      color: $blue;
+    }
+  }
+}
+
+.no-underline {
+  text-decoration: none !important;
+}
+
+.hide {
+  display: none !important;
+}
+
+.td-sidebar-link__page {
+  &#m-docs-search {
+    display: none;
+  }
+
+  &#m-docs-test {
+    display: none;
+  }
+}
+
+/* TOC */
+.td-toc {
+  padding-top: 1.5rem !important;
+}
+
+/* DOCS */
+
+/* Tooltip container */
+.glossary-tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+  /* If you want dots under the hoverable text */
+  color: black;
+  text-decoration: none !important;
+}
+
+/* Tooltip text */
+.glossary-tooltip .tooltip-text {
+  visibility: hidden;
+  width: 300px;
+  background-color: $medium-grey;
+  color: $white;
+  text-align: center;
+  padding: 5px 8px;
+  border-radius: 6px;
+
+  /* Position the tooltip text */
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -150px;
+
+  /* Fade in tooltip */
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+/* Tooltip arrow */
+.glossary-tooltip .tooltip-text::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: $medium-grey transparent transparent transparent;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.glossary-tooltip:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* /docs/home button styles */
+.button {
+  display: inline-block;
+  border-radius: 6px;
+  padding: 0 20px;
+  line-height: 40px;
+  color: $white;
+  background-color: $blue;
+  text-decoration: none;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+/* PARTNERS */
+
+section#users {
+  padding: 50px 35px;
+}
+
+main.main-section {
+  margin: auto;
+  max-width: 1150px !important;
+}
+
+section .main-section,
+header .main-section,
+footer .main-section {
+  @media screen and (min-width: 1025px) {
+    max-width: 1200px;
+  }
+}
+
+/* CASE-STUDIES */
+
+section .main-section {
+  position: relative;
+  margin: auto;
+}
+
+#videoPlayer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.9);
+  display: none;
+}
+
+#videoPlayer iframe {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80vw;
+  height: 45vw;
+  max-width: 142.22222222vh;
+  max-height: 80vh;
+}
+
+#videoPlayer #closeButton {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  border: 2px solid transparent;
+  transition: 0.3s;
+}
+
+button {
+  cursor: pointer;
+  box-sizing: border-box;
+  background: none;
+  margin: 0;
+  border: 0;
+}
