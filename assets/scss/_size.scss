@@ -72,8 +72,9 @@
 //   #tryKubernetes
 //     margin-left: $nav-buttons-margin-left
 
-// #hero
-//   padding-top: $hero-padding-top
+.header-hero {
+  padding-top: $hero-padding-top;
+}
 
 // #docs
 //   #hero
