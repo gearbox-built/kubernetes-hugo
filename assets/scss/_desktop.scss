@@ -168,12 +168,15 @@ $video-section-height: 550px;
       }
     }
 
-  //#home #bigSocial
-  //	div
-  //		width: calc(33% - 15px)
-  //
-  //	div:nth-child(3)
-  //		margin-top: inherit
+  .td-home #bigSocial {
+  	div {
+      width: calc(33% - 15px);
+    }
+  
+  	div:nth-child(3) {
+      margin-top: inherit;
+    }
+  }
   }
 
   // // FOOTER
