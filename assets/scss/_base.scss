@@ -106,7 +106,7 @@ $video-section-height: 200px;
 //   background-size: contain
 //   background-position: center center
 //   background-repeat: no-repeat
-  
+
 // #blog
 //   &.flip-nav, &.open-nav
 //     .logo
@@ -542,32 +542,39 @@ $video-section-height: 200px;
 // section
 //   background-color: white
 
-// #hero
-//   background-color: $dark-grey
+.header-hero {
+  background-color: $dark-grey;
 
-//   h5
-//     margin: 20px 0
-//     line-height: 28px
+  h5 {
+    margin: 20px 0;
+    line-height: 28px;
+  }
+}
 
-// #vendorStrip
-//   position: relative
+#vendorStrip {
+  position: relative;
 
-//   ul
-//     float: left
+  ul {
+    float: left;
+  }
 
-//   li
-//     display: inline-block
-//     height: 100%
+  li {
+    display: inline-block;
+    height: 100%;
+  }
 
-//   a
-//     display: block
-//     height: 100%
-//     color: white
-//     font-size: 0.75em
-//     font-weight: bold
+  a {
+    display: block;
+    height: 100%;
+    color: white;
+    font-size: 0.75em;
+    font-weight: bold;
+  }
 
-//   li + li
-//     margin-left: 0
+  li+li {
+    margin-left: 0;
+  }
+}
 
 
 // #docs
@@ -1109,7 +1116,7 @@ $feature-box-div-margin-bottom: 40px;
   }
 }
 
-#hero {
+.header-hero {
   margin-bottom: 0;
   padding-bottom: 1px;
 
