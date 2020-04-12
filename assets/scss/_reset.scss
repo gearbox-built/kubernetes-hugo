@@ -37,8 +37,9 @@ have been kept. */
 // .left
 //   float: left
 
-// .center
-//   text-align: center
+.center {
+  text-align: center;
+}
 
 //mixins
 @mixin fullScreen {
