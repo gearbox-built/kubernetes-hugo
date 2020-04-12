@@ -2,8 +2,9 @@
 Add styles or override variables from the theme here. */
 
 @import 'reset';
-@import 'settings';
+@import 'skin';
 
+//Media queries
 @import 'base';
 @import 'tablet';
 @import 'desktop';
