@@ -33,10 +33,13 @@ $video-section-height: 550px;
   //     float: right
 
 
-  // #home
-  //   #hero
-  //     #vendorStrip
-  //       display: block
+  .td-home {
+    .header-hero {
+      #vendorStrip {
+        display: block;
+      }
+    }
+  }
 
   // #docs
   //   #hero
@@ -106,10 +109,16 @@ $video-section-height: 550px;
   // #vendorStrip
   //   padding-right: 10px
 
-  // #home
-  //   section, header, footer
-  //     .main-section
-  //       max-width: 1000px
+  .td-home {
+
+    section,
+    header,
+    footer {
+      .main-section {
+        max-width: 1000px;
+      }
+    }
+  }
 
   #oceanNodes {
     .main-section {
