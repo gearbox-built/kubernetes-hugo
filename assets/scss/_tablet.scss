@@ -186,9 +186,12 @@ $feature-box-div-width: 45%;
   #video {
     height: $video-section-height;
     display: block;
+    height: 500px;
 
     & > .light-text {
       display: block;
+      float: right;
+      text-align: left;
     }
   }
 
