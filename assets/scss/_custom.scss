@@ -1,4 +1,8 @@
 /* GLOBAL */
+* {
+  border: 1px solid red;
+}
+
 .td-main main {
   @media only screen and (min-width: 768px) {
     padding-top: 2rem !important;
@@ -159,20 +163,21 @@ header {
 /* FOOTER */
 footer {
   background-image: url("/images/texture.png");
-  min-height: 16rem !important;
-  padding: 1rem 4rem !important;
+  padding: 1rem !important;
+  min-height: 500px !important;
 
-  @media only screen and (min-width: 1024px) {
-    min-height: 12rem !important;
+  @media only screen and (min-width: 768px) {
+    padding: 1rem 4rem !important;
+    min-height: 400px !important;
   }
 
   .footer__links {
     width: 100%;
-    margin: 0 1rem 1rem;
+    margin: auto;
 
-    nav {
-      display: flex;
-      justify-content: space-around;
+    nav a {
+      display: block;
+      text-align: center;
     }
   }
 
