@@ -1,5 +1,24 @@
 @import "reset";
 
+// // TEXT
+// $h1-font-size: 32px
+// $h1-line-height: 40px
+
+// $h2-font-size: 28px
+// $h2-line-height: 60px
+
+// $h3-font-size: 24px
+// $h3-line-height: 32px
+
+// $h4-font-size: 20px
+// $h4-line-height: 40px
+
+// $h5-font-size: 16px
+// $h5-line-height: 36px
+
+// $p-font-size: 14px
+// $p-line-height: 22px
+
 // header
 $full-width-paddingX: 20px;
 
@@ -46,9 +65,10 @@ $video-section-height: 200px;
 // body
 //   background-color: white
 
-// section
-//   position: relative
-//   background-color: white
+section {
+  position: relative;
+  background-color: white;
+}
 
 // section, header, footer
 //   .main-section
