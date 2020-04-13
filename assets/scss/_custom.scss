@@ -164,11 +164,15 @@ header {
 footer {
   background-image: url("/images/texture.png");
   padding: 1rem !important;
-  min-height: 500px !important;
+  min-height: 400px !important;
 
   @media only screen and (min-width: 768px) {
     padding: 1rem 4rem !important;
-    min-height: 400px !important;
+    min-height: 350px !important;
+  }
+
+  @media only screen and (min-width: 1025px) {
+    min-height: 300px !important;
   }
 
   .footer__links {
