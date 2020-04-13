@@ -1,10 +1,10 @@
 <!-- All base stylesheet links commented out as we are using Docsy for base styles. -->
 
-<!-- {{ $inServerMode := site.IsServer }} -->
+{{ $inServerMode := site.IsServer }}
 <!-- {{ $sass         := "sass/style.sass" }} -->
 <!-- {{ $cssOutput    := "css/style.css" }} -->
-<!-- {{ $devOpts      := (dict "targetPath" $cssOutput "enableSourceMap" true) }} -->
-<!-- {{ $prodOpts     := (dict "targetPath" $cssOutput "outputStyle" "compressed") }} -->
+{{ $devOpts      := (dict "targetPath" $cssOutput "enableSourceMap" true) }}
+{{ $prodOpts     := (dict "targetPath" $cssOutput "outputStyle" "compressed") }}
 <!-- {{ $cssOpts      := cond $inServerMode $devOpts $prodOpts }} -->
 <!-- {{ $css          := resources.Get $sass | resources.ExecuteAsTemplate $sass . | toCSS $cssOpts }} -->
 <!-- {{ if $inServerMode }}
@@ -16,7 +16,18 @@
 
 <link rel="stylesheet" href="/css/base_fonts.css">
 {{- if .Params.case_study_styles }}
-<link rel="stylesheet" href="/css/case-study-styles.css">
+
+{{ $cssOutput := "css/case-studies.css" }}
+{{ $caseStudiesCSS := resources.Get "scss/_case-studies.scss" | resources.ToCSS }}
+<!-- this stylesheet no longer exists -->
+<!-- <link rel="stylesheet" href="/css/case-study-styles.css"> -->
+{{ if $inServerMode }}
+<link rel="stylesheet" href="{{ $caseStudiesCSS.RelPermalink }}">
+{{ else }}
+{{ $prodCaseStudiesCSS := $caseStudiesCSS | fingerprint }}
+<link rel="stylesheet" href="{{ $prodCaseStudiesCSS.RelPermalink }}" integrity="{{ $prodCaseStudiesCSS.Data.Integrity }}">
+{{ end }}
+
 {{- end }}
 <link rel="stylesheet" href="{{ "css/jquery-ui.min.css" | relURL }}">
 <link rel="stylesheet" href="{{ "css/callouts.css" | relURL }}">
