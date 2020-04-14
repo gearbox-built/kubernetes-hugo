@@ -3,18 +3,28 @@
   border: 1px solid red;
 }
 
-.td-main main {
-  @media only screen and (min-width: 768px) {
-    padding-top: 2rem !important;
+.td-main {
+  .row {
+    margin: 0;
   }
 
-  img {
-    max-width: 100%;
-  }
+  main {
+    @media only screen and (min-width: 768px) {
+      padding-top: 2rem !important;
+    }
 
-  table {
-    margin-bottom: 1rem;
+    img {
+      max-width: 100%;
+    }
+
+    table {
+      margin-bottom: 1rem;
+    }
   }
+}
+
+.td-outer {
+  padding: 0 !important;
 }
 
 /* HEADER */
@@ -25,14 +35,16 @@ header {
   left: 0;
   width: 100%;
   z-index: 8888;
-  background-color: transparent;
-  box-shadow: 0 0 0 transparent;
-  overflow: hidden;
-  text-align: center;
+  // margin-left: -15px;
+  // background-color: transparent;
+  // box-shadow: 0 0 0 transparent;
+  // overflow: hidden;
+  // text-align: center;
 }
 
 .navbar {
   position: fixed !important;
+  overflow: hidden;
 }
 
 .td-navbar {
@@ -116,7 +128,7 @@ header {
   }
 
   @media only screen and (max-width: 1078px) {
-    font-size: .825rem;
+    font-size: .8rem;
   }
 }
 
@@ -165,7 +177,7 @@ footer {
   background-image: url("/images/texture.png");
   padding: 1rem !important;
   min-height: 475px !important;
-  margin: 0 -15px;
+  // margin: 0 15px;
 
   @media only screen and (min-width: 768px) {
     padding: 1rem 4rem !important;
@@ -216,7 +228,7 @@ footer {
 
 .td-sidebar {
   @media only screen and (min-width:768px) {
-    padding-top: 0.75rem !important;
+    padding-top: 1.5rem !important;
   }
 }
 
