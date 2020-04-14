@@ -9,7 +9,7 @@ weight: 70
 
 {{% capture overview %}}
 
-{{< feature-state for_k8s_version="1.14" state="stable" >}}
+{{< feature-state for_k8s_version="v1.14" state="stable" >}}
 
 [Pods](/docs/user-guide/pods) can have _priority_. Priority indicates the
 importance of a Pod relative to other Pods. If a Pod cannot be scheduled, the
@@ -145,7 +145,7 @@ description: "This priority class should be used for XYZ service pods only."
 
 ## Non-preempting PriorityClass {#non-preempting-priority-class}
 
-{{< feature-state for_k8s_version="1.15" state="alpha" >}}
+{{< feature-state for_k8s_version="v1.15" state="alpha" >}}
 
 Pods with `PreemptionPolicy: Never` will be placed in the scheduling queue
 ahead of lower-priority pods,
@@ -409,7 +409,7 @@ See
 [evicting end-user pods](/docs/tasks/administer-cluster/out-of-resource/#evicting-end-user-pods)
 for more details.
 
-kubelet out-of-resource eviction does not evict Pods wheir their
+kubelet out-of-resource eviction does not evict Pods when their
 usage does not exceed their requests. If a Pod with lower priority is not
 exceeding its requests, it won't be evicted. Another Pod with higher priority
 that exceeds its requests may be evicted.
