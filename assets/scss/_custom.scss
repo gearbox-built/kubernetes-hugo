@@ -164,26 +164,38 @@ header {
 footer {
   background-image: url("/images/texture.png");
   padding: 1rem !important;
-  min-height: 400px !important;
+  min-height: 475px !important;
+  margin: 0 -15px;
 
   @media only screen and (min-width: 768px) {
     padding: 1rem 4rem !important;
-    min-height: 350px !important;
+    min-height: 250px !important;
   }
 
   @media only screen and (min-width: 1025px) {
-    min-height: 300px !important;
+    min-height: 200px !important;
   }
 
   .footer__links {
     width: 100%;
     margin: auto;
 
-    nav a {
-      display: block;
-      text-align: center;
+    @media only screen and (min-width: 768px) {
+      nav {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+      }
+    }
+
+    @media only screen and (max-width: 767px) {
+      nav a {
+        display: block;
+        text-align: center;
+      }
     }
   }
+
 
   small {
     color: $light-grey;
