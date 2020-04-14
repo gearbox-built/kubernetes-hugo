@@ -7,6 +7,7 @@
 		{{ partial "navbar.html" . }}
 		{{ block "main" . }}{{ end }}
 		{{ partialCached "footer.html" . }}
-		{{ partialCached "footer-scripts.html" . }}
+		<!-- Disabling this as elements queries do not appear to exist on case studies -->
+		<!-- {{ partialCached "footer-scripts.html" . }} -->
 	</body>
 </html>
