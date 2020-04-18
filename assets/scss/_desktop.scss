@@ -54,6 +54,10 @@ $video-section-height: 550px;
     position: relative;
     background-position: center center;
     background-size: cover;
+
+    & > .light-text {
+      margin-right: 10%;
+    }
   }
 
 
