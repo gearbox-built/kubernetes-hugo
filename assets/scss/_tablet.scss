@@ -45,27 +45,12 @@ $feature-box-div-width: 45%;
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-@media screen and (min-width: 750px) {
+@media screen and (min-width: 768px) {
   @import "size";
 
-  // p
-  //   font-size: 16px
-  //   line-height: 24px
-  //   letter-spacing: 0.1px
-
-  // h1
-  //   font-size: 36px
-  //   line-height: 44px
-
-  // h3
-  //   font-size: 28px
-  //   line-height: 36px
-
-  // h4
-  //   font-size: 24px
-  //   line-height: 40px
-
-
+  #hamburger {
+    display: none;
+  }
 
   .td-home {
     #viewDocs, #tryKubernetes {
@@ -83,17 +68,6 @@ $feature-box-div-width: 45%;
       margin: 0 30px;
     }
   }
-
-  // #docs
-  //   #vendorStrip
-  //     li
-  //       a
-  //         font-size: 1em
-  //         font-weight: normal
-
-  //       li + li
-  //         margin-left: 60px
-
 
   #oceanNodes {
     h3 {

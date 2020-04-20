@@ -26,42 +26,54 @@
 /* HEADER */
 
 header {
-  position: relative;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 8888;
-}
 
-header .navbar {
-  position: fixed !important;
+  #hamburger {
+    div {
+      opacity: 0;
+    }
+
+    &:before,
+    &:after {
+      left: 12px;
+      transform-origin: 0 1px;
+    }
+
+    &:before {
+      transform: rotate(45deg);
+    }
+
+    &:after {
+      transform: rotate(-45deg);
+    }
+  }
 }
 
 .td-navbar {
+  position: fixed !important;
+  width: 100%;
   background: transparent !important;
   transition: 0.3s;
 
   .navbar-brand {
     position: absolute;
-    margin-top: 1.5rem;
-    margin-left: 1rem;
-    width: 180px;
-    height: 88px;
+    width: 45px;
+    height: 44px;
     background-repeat: no-repeat;
     background-size: contain;
-    background-image: url("/images/nav_logo.svg");
+    background-image: url("/images/favicon.png");
   }
 
-  @media only screen and (max-width: 767px) {
-    margin: auto;
-    text-align: center;
-    height: 16rem;
-
+  @media only screen and (min-width: 768px) {
     .navbar-brand {
-      background-image: url("/images/favicon.png");
-      position: relative;
-      width: 45px;
-      height: 44px;
+      background-image: url("/images/nav_logo.svg");
+      width: 180px;
+      height: 88px;
+      margin-top: 1.5rem;
+      margin-left: 1rem;
     }
   }
 }
@@ -85,6 +97,7 @@ header .navbar {
 
 .td-navbar-nav-scroll {
   overflow: visible !important;
+  display: none;
 
   .navbar-nav {
     position: relative;
@@ -120,6 +133,10 @@ header .navbar {
   @media only screen and (max-width: 1078px) {
     font-size: .8rem;
   }
+
+  @media only screen and (min-width: 768px) {
+    display: block;
+  }
 }
 
 // Flip-Nav
@@ -152,6 +169,15 @@ header .navbar {
 
     &::after {
       background: $dark-grey;
+    }
+  }
+
+  #hamburger:hover {
+
+    div,
+    &:before,
+    &:after {
+      background-color: $dark-grey;
     }
   }
 
