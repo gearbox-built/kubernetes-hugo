@@ -35,7 +35,6 @@ header {
 
 header .navbar {
   position: fixed !important;
-  overflow: hidden;
 }
 
 .td-navbar {
@@ -140,7 +139,7 @@ header .navbar {
         }
       }
 
-      .dropdown-menu {
+      .dropdown {
         &:hover {
           color: $medium-grey;
         }
