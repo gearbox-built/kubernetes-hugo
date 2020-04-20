@@ -25,7 +25,7 @@ $main-nav-left-button-font-size: 18px;
 
 
 // hero
-$hero-padding-top: 80px;
+$hero-padding-top: 115px;
 $headline-wrapper-margin-bottom: 40px;
 $quickstart-button-padding: 0 50px;
 $vendor-strip-font-size: 16px;
@@ -53,7 +53,9 @@ $feature-box-div-width: 45%;
   }
 
   .td-home {
-    #viewDocs, #tryKubernetes {
+
+    #viewDocs,
+    #tryKubernetes {
       display: inline-block;
     }
   }
@@ -75,7 +77,8 @@ $feature-box-div-width: 45%;
       margin-bottom: 18px;
     }
 
-    main, .main-section {
+    main,
+    .main-section {
       position: relative;
       clear: both;
       display: table;
@@ -114,7 +117,8 @@ $feature-box-div-width: 45%;
       &:nth-child(1) {
         padding-right: 0;
 
-        h3, p {
+        h3,
+        p {
           text-align: center;
         }
 
@@ -143,7 +147,7 @@ $feature-box-div-width: 45%;
     display: block;
     height: 500px;
 
-    & > .light-text {
+    &>.light-text {
       display: block;
       float: right;
       text-align: left;
@@ -171,7 +175,7 @@ $feature-box-div-width: 45%;
     }
 
     .feature-box {
-      & > div {
+      &>div {
         width: $feature-box-div-width;
         margin-bottom: $feature-box-div-margin-bottom;
       }
@@ -184,7 +188,7 @@ $feature-box-div-width: 45%;
         width: calc(50% - 15px);
       }
 
-      div + div {
+      div+div {
         margin-top: 0;
       }
 
