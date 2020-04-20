@@ -1,5 +1,5 @@
 {{ $cover := .HasShortcode "blocks/cover" }}
-<nav class="js-navbar-scroll navbar navbar-expand navbar-dark {{ if $cover}} td-navbar-cover {{ end }}flex-column flex-md-row td-navbar">
+<nav class="js-navbar-scroll navbar navbar-expand navbar-dark {{ if $cover}} td-navbar-cover {{ end }} flex-row td-navbar" data-auto-burger="primary">
         <a class="navbar-brand" href="{{ .Site.Home.RelPermalink }}"></a>
 	<div class="td-navbar-nav-scroll ml-md-auto" id="main_navbar">
 		
@@ -26,4 +26,5 @@
 			{{ end }}
 		</ul>
 	</div>
+	<button id="hamburger" onclick="kub.toggleMenu()" data-auto-burger-exclude><div></div></button>
 </nav>
