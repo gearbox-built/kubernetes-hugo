@@ -30,26 +30,6 @@ header {
   left: 0;
   width: 100%;
   z-index: 8888;
-
-  #hamburger {
-    div {
-      opacity: 0;
-    }
-
-    &:before,
-    &:after {
-      left: 12px;
-      transform-origin: 0 1px;
-    }
-
-    &:before {
-      transform: rotate(45deg);
-    }
-
-    &:after {
-      transform: rotate(-45deg);
-    }
-  }
 }
 
 .td-navbar {
