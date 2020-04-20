@@ -25,7 +25,7 @@ $main-nav-left-button-font-size: 18px;
 
 
 // hero
-$hero-padding-top: 80px;
+$hero-padding-top: 115px;
 $headline-wrapper-margin-bottom: 40px;
 $quickstart-button-padding: 0 50px;
 $vendor-strip-font-size: 16px;
@@ -45,30 +45,17 @@ $feature-box-div-width: 45%;
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-@media screen and (min-width: 750px) {
+@media screen and (min-width: 768px) {
   @import "size";
 
-  // p
-  //   font-size: 16px
-  //   line-height: 24px
-  //   letter-spacing: 0.1px
-
-  // h1
-  //   font-size: 36px
-  //   line-height: 44px
-
-  // h3
-  //   font-size: 28px
-  //   line-height: 36px
-
-  // h4
-  //   font-size: 24px
-  //   line-height: 40px
-
-
+  #hamburger {
+    display: none;
+  }
 
   .td-home {
-    #viewDocs, #tryKubernetes {
+
+    #viewDocs,
+    #tryKubernetes {
       display: inline-block;
     }
   }
@@ -84,24 +71,14 @@ $feature-box-div-width: 45%;
     }
   }
 
-  // #docs
-  //   #vendorStrip
-  //     li
-  //       a
-  //         font-size: 1em
-  //         font-weight: normal
-
-  //       li + li
-  //         margin-left: 60px
-
-
   #oceanNodes {
     h3 {
       text-align: left;
       margin-bottom: 18px;
     }
 
-    main, .main-section {
+    main,
+    .main-section {
       position: relative;
       clear: both;
       display: table;
@@ -140,7 +117,8 @@ $feature-box-div-width: 45%;
       &:nth-child(1) {
         padding-right: 0;
 
-        h3, p {
+        h3,
+        p {
           text-align: center;
         }
 
@@ -169,7 +147,7 @@ $feature-box-div-width: 45%;
     display: block;
     height: 500px;
 
-    & > .light-text {
+    &>.light-text {
       display: block;
       float: right;
       text-align: left;
@@ -197,7 +175,7 @@ $feature-box-div-width: 45%;
     }
 
     .feature-box {
-      & > div {
+      &>div {
         width: $feature-box-div-width;
         margin-bottom: $feature-box-div-margin-bottom;
       }
@@ -210,7 +188,7 @@ $feature-box-div-width: 45%;
         width: calc(50% - 15px);
       }
 
-      div + div {
+      div+div {
         margin-top: 0;
       }
 
