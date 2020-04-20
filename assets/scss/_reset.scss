@@ -1,41 +1,20 @@
-/* This file has been tranferred from the old k8ts site styles.
-As Docsy is now handling the majority of the styling, only the mixins
-have been kept. */
+// CONVENIENCE
+.clear {
+  display: block; 
+  clear: both;
+}
 
-// html, body
-//   margin: 0
-//   padding: 0
+.light-text {
+  color: white;
+}
 
+.right {
+  float: right;
+}
 
-// input, button
-//   outline: none
-
-// button
-//   cursor: pointer
-
-// ul, li
-//   list-style: none
-
-// ul
-//   margin: 0
-//   padding: 0
-	
-// a
-//   text-decoration: none
-
-// // CONVENIENCE
-// .clear
-//   display: block
-//   clear: both
-
-// .light-text
-//   color: white
-
-// .right
-//   float: right
-
-// .left
-//   float: left
+.left {
+  float: left;
+}
 
 .center {
   text-align: center;

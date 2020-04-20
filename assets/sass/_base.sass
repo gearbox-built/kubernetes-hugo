@@ -107,9 +107,9 @@ header
   z-index: 8888
   background-color: transparent
   box-shadow: 0 0 0 transparent
-  overflow: hidden
   transition: 0.3s
   text-align: center
+  overflow: hidden
 
 
 .logo
@@ -125,7 +125,7 @@ header
   background-size: contain
   background-position: center center
   background-repeat: no-repeat
-  
+
 #blog
   &.flip-nav, &.open-nav
     .logo
@@ -245,6 +245,7 @@ header
       background-color: white
 
 #mainNav
+
   h5
     color: $blue
     font-weight: normal
@@ -490,7 +491,7 @@ footer
   display: inline-block
   background-image: url(/images/social_sprite.svg)
   background-repeat: no-repeat
-  background-size: 300px
+  background-size: 350px
   width: 50px
   height: 50px
   border-radius: 5px
@@ -549,6 +550,12 @@ a.calendar
   &:hover
     background-position: -250px 100%
 
+a.youtube
+  background-position: -300px 0
+
+  &:hover
+    background-position: -300px 100%
+
 #viewDocs
   display: none
 
@@ -571,6 +578,9 @@ section
   li
     display: inline-block
     height: 100%
+    margin-right: 10px
+    &:last-child
+      margin-right: 0
 
   a
     display: block
@@ -591,11 +601,11 @@ section
   #vendorStrip
     line-height: 44px
     max-width: 100%
-    overflow-x: auto
     -webkit-overflow-scrolling: touch
 
     ul
       float: none
+      overflow-x: auto
 
     #searchBox
       float: none
@@ -1044,6 +1054,9 @@ dd
 
   a.issue
     margin-left: 0px
+
+.gridPageHome .flyout-button
+  display: none
 
 .feedback--no
   margin-left: 1em
