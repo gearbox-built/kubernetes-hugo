@@ -51,9 +51,9 @@ header {
   @media only screen and (min-width: 768px) {
     .navbar-brand {
       background-image: url("/images/nav_logo.svg");
+      top: 1.5rem;
       width: 180px;
       height: 88px;
-      margin-top: 1.5rem;
       margin-left: 1rem;
     }
   }
@@ -64,6 +64,7 @@ header {
   display: none;
 
   .navbar-nav {
+    overflow: visible !important;
     position: relative;
     display: flex;
     flex-direction: row;
@@ -95,13 +96,14 @@ header {
   }
 
   @media only screen and (min-width: 768px) {
+    font-size: 0.875rem;
     display: block;
     margin-top: 3.5rem !important;
   }
 
   @media only screen and (min-width: 1024px) {
     font-size: 0.8rem;
-    margin-top: 0.5rem !important;
+    margin-top: 1.5rem !important;
   }
 }
 
