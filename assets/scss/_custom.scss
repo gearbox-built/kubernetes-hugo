@@ -41,6 +41,7 @@ header {
 
   .navbar-brand {
     position: absolute;
+    top: 1.5rem;
     width: 45px;
     height: 44px;
     background-repeat: no-repeat;
@@ -53,7 +54,6 @@ header {
       background-image: url("/images/nav_logo.svg");
       width: 180px;
       height: 88px;
-      margin-top: 1.5rem;
       margin-left: 1rem;
     }
   }
@@ -96,13 +96,14 @@ header {
   }
 
   @media only screen and (min-width: 768px) {
+    font-size: 0.875rem;
     display: block;
     margin-top: 3.5rem !important;
   }
 
   @media only screen and (min-width: 1024px) {
     font-size: 0.8rem;
-    margin-top: 0.5rem !important;
+    margin-top: 1.5rem !important;
   }
 }
 
