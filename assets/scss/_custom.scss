@@ -64,6 +64,7 @@ header {
   display: none;
 
   .navbar-nav {
+    overflow: visible !important;
     position: relative;
     display: flex;
     flex-direction: row;
