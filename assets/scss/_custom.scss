@@ -5,16 +5,24 @@
   }
 
   main {
-    @media only screen and (min-width: 768px) {
-      padding-top: 2rem !important;
-    }
-
     img {
       max-width: 100%;
     }
 
     table {
       margin-bottom: 1rem;
+    }
+
+    @media only screen and (min-width: 768px) {
+      padding-top: 2rem !important;
+    }
+  }
+}
+
+section {
+  .main-section {
+    @media only screen and (min-width: 1024px) {
+      max-width: 1200px;
     }
   }
 }
@@ -24,13 +32,6 @@
 }
 
 /* HEADER */
-
-header {
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 8888;
-}
 
 .td-navbar {
   position: fixed !important;
@@ -79,7 +80,7 @@ header {
         position: absolute;
         width: 100%;
         height: 2px;
-        content: '';
+        content: "";
         bottom: -4px;
         left: 0;
         background: #fff;
@@ -114,7 +115,6 @@ header {
 
   .navbar-nav {
     .nav-item {
-
       &.show .nav-link,
       .nav-link {
         color: $dark-grey;
@@ -141,7 +141,6 @@ header {
   }
 
   #hamburger:hover {
-
     div,
     &:before,
     &:after {
@@ -167,6 +166,11 @@ footer {
     margin: auto;
     padding-bottom: 1rem;
 
+    nav a {
+      display: block;
+      text-align: center;
+    }
+
     @media only screen and (min-width: 768px) {
       nav {
         display: flex;
@@ -174,15 +178,7 @@ footer {
         justify-content: space-around;
       }
     }
-
-    @media only screen and (max-width: 767px) {
-      nav a {
-        display: block;
-        text-align: center;
-      }
-    }
   }
-
 
   small {
     color: $light-grey;
@@ -199,10 +195,33 @@ footer {
   }
 }
 
-/* SEARCH & SIDEBAR */
+/* DOCS */
+
+.launch-cards {
+  button {
+    cursor: pointer;
+    box-sizing: border-box;
+    background: none;
+    margin: 0;
+    border: 0;
+  }
+
+  ul,
+  li {
+    list-style: none;
+    padding-left: 0;
+  }
+}
+
+/* table of contents */
+.td-toc {
+  padding-top: 1.5rem !important;
+}
+
+/* search & sidebar */
 
 .td-sidebar {
-  @media only screen and (min-width:768px) {
+  @media only screen and (min-width: 768px) {
     padding-top: 1.5rem !important;
   }
 }
@@ -245,106 +264,31 @@ footer {
   }
 }
 
-/* TOC */
-.td-toc {
-  padding-top: 1.5rem !important;
-}
+/* COMMUNITY */
 
-/* DOCS */
+.newcommunitywrapper {
+  .news {
+    margin-left: 0;
 
-/* Tooltip container */
-.glossary-tooltip {
-  position: relative;
-  display: inline-block;
-  border-bottom: 1px dotted black;
-  /* If you want dots under the hoverable text */
-  color: black;
-  text-decoration: none !important;
-}
-
-/* Tooltip text */
-.glossary-tooltip .tooltip-text {
-  visibility: hidden;
-  width: 300px;
-  background-color: $medium-grey;
-  color: $white;
-  text-align: center;
-  padding: 5px 8px;
-  border-radius: 6px;
-
-  /* Position the tooltip text */
-  position: absolute;
-  z-index: 1;
-  bottom: 125%;
-  left: 50%;
-  margin-left: -150px;
-
-  /* Fade in tooltip */
-  opacity: 0;
-  transition: opacity 0.3s;
-}
-
-/* Tooltip arrow */
-.glossary-tooltip .tooltip-text::after {
-  content: "";
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  margin-left: -5px;
-  border-width: 5px;
-  border-style: solid;
-  border-color: $medium-grey transparent transparent transparent;
-}
-
-/* Show the tooltip text when you mouse over the tooltip container */
-.glossary-tooltip:hover .tooltip-text {
-  visibility: visible;
-  opacity: 1;
-}
-
-/* /docs/home button styles */
-.button {
-  display: inline-block;
-  border-radius: 6px;
-  padding: 0 20px;
-  line-height: 40px;
-  color: $white;
-  background-color: $blue;
-  text-decoration: none;
-  font-size: 1rem;
-  margin-bottom: 1rem;
-}
-
-/* PARTNERS */
-
-section#users {
-  padding: 50px 35px;
-}
-
-main.main-section {
-  margin: auto;
-  max-width: 1150px !important;
-}
-
-section .main-section,
-header .main-section,
-footer .main-section {
-  @media screen and (min-width: 1025px) {
-    max-width: 1200px;
+    @media screen and (min-width: 768px) {
+      margin-left: 10%;
+    }
   }
 }
 
 /* CASE-STUDIES */
 
-section .main-section {
-  position: relative;
-  margin: auto;
-}
-
-button {
-  cursor: pointer;
-  box-sizing: border-box;
-  background: none;
-  margin: 0;
-  border: 0;
+// Many of the case studies have small variations in markup and styles;
+// some issues cannot be addressed due to inlined !important rules.
+#caseStudies {
+  section .cols {
+    margin-left: 11%;
+    
+    div {
+      width: initial !important;
+      h2 {
+        margin-top: 1rem;
+      }
+    }
+  }
 }

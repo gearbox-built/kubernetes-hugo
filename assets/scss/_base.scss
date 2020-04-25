@@ -14,7 +14,6 @@ $nav-buttons-margin-left: 30px;
 
 $hamburger-size: 50px;
 
-
 // main nav
 $main-nav-padding: 140px 0 30px;
 $main-nav-h5-margin-bottom: 1em;
@@ -24,7 +23,6 @@ $nav-box-sibling-margin-left: calc(20% / 3);
 $main-nav-main-sibling-margin-top: 60px;
 $main-nav-left-button-size: 50px;
 $main-nav-left-button-font-size: 18px;
-
 
 // hero
 $hero-padding-top: 80px;
@@ -37,7 +35,6 @@ $vendor-strip-font-size: 16px;
 $video-section-height: 200px;
 
 @import "size";
-
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -64,7 +61,6 @@ footer {
     font-size: 14px;
     font-weight: 400;
   }
-
 
   .button {
     display: inline-block;
@@ -123,7 +119,6 @@ footer {
   }
 
   &:hover {
-
     div,
     &:before,
     &:after {
@@ -148,11 +143,10 @@ footer {
     height: 8px;
     width: 100%;
     background-color: transparentize(white, 0.9);
-    content: '';
+    content: "";
   }
 
   &.no-sub {
-
     h5 {
       display: none;
     }
@@ -196,19 +190,19 @@ footer {
     font-weight: bold;
   }
 
-  li+li {
+  li + li {
     margin-left: 0;
   }
 }
 
 .pi-accordion {
-  &>.container:first-child>.item:first-child>.title:first-child {
+  & > .container:first-child > .item:first-child > .title:first-child {
     padding-left: 0;
     font-size: 1.5em;
     font-weight: 700;
   }
 
-  &>.container:first-child>.item.yah:first-child>.title:first-child {
+  & > .container:first-child > .item.yah:first-child > .title:first-child {
     margin-left: -20px !important;
   }
 
@@ -228,7 +222,7 @@ footer {
     }
   }
 
-  a.item>.title {
+  a.item > .title {
     color: black;
 
     &:hover {
@@ -236,7 +230,7 @@ footer {
     }
   }
 
-  div.item>.title {
+  div.item > .title {
     &:before {
       content: "";
       position: absolute;
@@ -263,16 +257,15 @@ footer {
   }
 
   .item.on {
-    &>.title:before {
+    & > .title:before {
       transform: rotate(90deg);
     }
 
-    &>.wrapper>.content {
+    & > .wrapper > .content {
       opacity: 1;
     }
   }
 }
-
 
 dt {
   margin-bottom: 8px;
@@ -410,11 +403,9 @@ $feature-box-div-width: 100%;
 $feature-box-margin-bottom: 0;
 $feature-box-div-margin-bottom: 40px;
 
-
 // Home-specific
 
 .td-home {
-
   &.flip-nav,
   &.open-nav {
     .logo {
@@ -446,8 +437,6 @@ section#cncf {
   background-repeat: no-repeat;
   background-size: 300px;
 }
-
-
 
 // OCEAN NODES
 #oceanNodes {
@@ -489,7 +478,6 @@ section#cncf {
   }
 }
 
-
 // Video thingy
 #video {
   height: $video-section-height;
@@ -501,8 +489,7 @@ section#cncf {
   background-position: center center;
   background-size: cover;
 
-
-  &>.light-text {
+  & > .light-text {
     display: none;
     // position: absolute;
     // top: 50%;
@@ -665,11 +652,11 @@ section#cncf {
     margin-bottom: 15px;
   }
 
-  &>div:first-child {
+  & > div:first-child {
     float: left;
   }
 
-  &>div:last-child {
+  & > div:last-child {
     float: right;
   }
 }
@@ -682,7 +669,7 @@ section#cncf {
   .feature-box {
     margin-bottom: $feature-box-margin-bottom;
 
-    &>div {
+    & > div {
       width: $feature-box-div-width;
       margin-bottom: $feature-box-div-margin-bottom;
     }
@@ -691,7 +678,6 @@ section#cncf {
 
 // Talk to us
 #talkToUs {
-
   h3,
   h4 {
     text-align: center;
@@ -739,7 +725,7 @@ section#cncf {
       background-image: url(/images/stackoverflow_icon.png);
     }
 
-    div+div {
+    div + div {
       margin-top: 20px;
       margin-left: 0;
     }
@@ -771,7 +757,6 @@ section#cncf {
       font-size: 20px;
     }
   }
-
 
   #caseStudiesWrapper {
     position: relative;

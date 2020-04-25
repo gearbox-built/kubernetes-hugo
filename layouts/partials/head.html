@@ -1,3 +1,6 @@
+<!-- The head.html partials from old K8TS and Docsy have been merged here. Some script calls
+from K8TS are removed, e.g. Bootstrap, as they are already brought in with Docsy -->
+
 {{- $isBlogPost := eq .Section "blog" }}
 {{- $ogType := cond (.IsHome) "website" "article" }}
 <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -45,6 +48,14 @@
 
 <!-- Docsy head.html ends here -->
 
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "url": "https://kubernetes.io",
+    "logo": "https://kubernetes.io/images/favicon.png"
+  }
+</script>
 <link rel="shortcut icon" type="image/png" href="{{ "images/favicon.png" | relURL }}">
 {{ partial "css.html" . }}
 <!-- Content for social media sharing previews -->
@@ -70,7 +81,14 @@
 <script src="{{ "js/jquery-ui-1.12.1.min.js" | relURL }}"></script>
 <script src="{{ "js/sweetalert-2.1.2.min.js" | relURL }}"></script>
 
+{{ if eq .Params.mermaid true }}
+<!-- Copied from https://unpkg.com/mermaid@8.5.0/dist/mermaid.min.js -->
+<script async src="{{ "js/mermaid.min.js" | relURL }}"></script>
+{{ end }}
+
 <script src="{{ "js/script.js" | relURL }}"></script>
 <script src="{{ "js/custom-jekyll/tags.js" | relURL }}"></script>
 {{ with .Params.js }}{{ range (split . ",") }}<script src="{{ (trim . " ") | relURL }}"></script><!-- custom js added -->
 {{ end }}{{ else }}<!-- no custom js detected -->{{ end }}
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="apple-touch-icon" href="/images/kubernetes-192x192.png">

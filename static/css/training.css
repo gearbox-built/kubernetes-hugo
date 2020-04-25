@@ -16,10 +16,10 @@ section.call-to-action {
 }
 
 section.call-to-action .main-section {
-    max-width: initial;
+  max-width: initial;
 }
 
-section.call-to-action .main-section > div.call-to-action {
+section.call-to-action .main-section>div.call-to-action {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -31,7 +31,7 @@ section.call-to-action .main-section > div.call-to-action {
   padding-bottom: 5rem;
 }
 
-section.call-to-action .main-section > div.call-to-action > div {
+section.call-to-action .main-section>div.call-to-action>div {
   order: 1;
   padding: 20px;
 }
@@ -56,7 +56,7 @@ section.call-to-action .main-section .cta-image.cta-image-after {
   order: 2
 }
 
-section.call-to-action .main-section .cta-image > img {
+section.call-to-action .main-section .cta-image>img {
   display: block;
   width: 150px;
   margin: auto;
@@ -69,12 +69,16 @@ section.call-to-action .main-section .cta-image > img {
   margin: 1% 0 1% 1.6%;
 }
 
-.col:first-child { margin-left: 0; }
+.col:first-child {
+  margin-left: 0;
+}
 
 .col-container {
-  display: flex; /* Make the container element behave like a table */
+  display: flex;
+  /* Make the container element behave like a table */
   flex-direction: row;
-  width: 100%; /* Set full-width to expand the whole page */
+  width: 100%;
+  /* Set full-width to expand the whole page */
   padding-bottom: 30px;
 }
 
@@ -89,18 +93,24 @@ section.call-to-action .main-section .cta-image > img {
 
 
 @media only screen and (max-width: 840px) {
-  section.call-to-action .main-section .cta-image.cta-image-before, section.call-to-action .main-section .cta-image.cta-image-after {
+
+  section.call-to-action .main-section .cta-image.cta-image-before,
+  section.call-to-action .main-section .cta-image.cta-image-after {
     order: 0;
   }
-  section.call-to-action .main-section .cta-image > img {
+
+  section.call-to-action .main-section .cta-image>img {
     margin: 0;
   }
-  section.call-to-action .main-section .cta-image > img {
+
+  section.call-to-action .main-section .cta-image>img {
     width: 7rem;
   }
-  section.call-to-action .main-section > div.call-to-action > div {
+
+  section.call-to-action .main-section>div.call-to-action>div {
     padding: 0 2rem 0 2rem;
   }
+
   section.call-to-action .main-section .cta-text {
     flex: 2 0 75vw;
     max-width: initial;
@@ -112,8 +122,13 @@ section.call-to-action .main-section .cta-image > img {
 /*  GO FULL WIDTH AT LESS THAN 480 PIXELS */
 
 @media only screen and (max-width: 480px) {
-  .col { margin: 1% 0 1% 0%;}
-  .col-container { flex-direction: column; }
+  .col {
+    margin: 1% 0 1% 0%;
+  }
+
+  .col-container {
+    flex-direction: column;
+  }
 }
 
 @media only screen and (max-width: 650px) {
@@ -121,10 +136,13 @@ section.call-to-action .main-section .cta-image > img {
     display: block;
     width: 100%;
   }
-  .col-container { flex-direction: column; }
+
+  .col-container {
+    flex-direction: column;
+  }
 }
 
-.button{
+.button {
   max-width: 100%;
   box-sizing: border-box;
   font-family: "Roboto", sans-serif;
@@ -173,7 +191,7 @@ h5 {
 .landscape-section {
   margin-left: auto;
   margin-right: auto;
-  /* width: 1200px; */
+  max-width: 1200px;
   width: 100%;
 }
 
@@ -181,6 +199,5 @@ h5 {
   opacity: 1;
   visibility: visible;
   overflow: hidden;
-  /* width: 1200px; */
   width: 100%;
 }
