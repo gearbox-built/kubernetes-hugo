@@ -19,6 +19,14 @@
   }
 }
 
+section {
+  .main-section {
+    @media only screen and (min-width: 1024px) {
+      max-width: 1200px;
+    }
+  }
+}
+
 .td-outer {
   padding: 0 !important;
 }
@@ -198,7 +206,8 @@ footer {
     border: 0;
   }
 
-  ul, li {
+  ul,
+  li {
     list-style: none;
     padding-left: 0;
   }
@@ -252,5 +261,32 @@ footer {
 
   &#m-docs-test {
     display: none;
+  }
+}
+
+/* COMMUNITY */
+
+.newcommunitywrapper {
+  .news {
+    margin-left: 0;
+
+    @media screen and (min-width: 768px) {
+      margin-left: 10%;
+    }
+  }
+}
+
+/* CASE-STUDIES */
+
+// Many of the case studies have small variations in markup and styles;
+// some issues cannot be addressed due to inlined !important rules.
+#caseStudies {
+  section .cols {
+    div {
+      width: initial !important;
+      h2 {
+        margin-top: 1rem;
+      }
+    }
   }
 }
