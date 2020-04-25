@@ -1,26 +1,13 @@
-<!-- All base stylesheet links commented out as we are using Docsy for base styles. -->
+<!-- All former base stylesheet links commented out as we are using Docsy for styles. -->
 
 {{ $inServerMode := site.IsServer }}
-<!-- {{ $sass         := "sass/style.sass" }} -->
-<!-- {{ $cssOutput    := "css/style.css" }} -->
-{{ $devOpts      := (dict "targetPath" $cssOutput "enableSourceMap" true) }}
-{{ $prodOpts     := (dict "targetPath" $cssOutput "outputStyle" "compressed") }}
-<!-- {{ $cssOpts      := cond $inServerMode $devOpts $prodOpts }} -->
-<!-- {{ $css          := resources.Get $sass | resources.ExecuteAsTemplate $sass . | toCSS $cssOpts }} -->
-<!-- {{ if $inServerMode }}
-<link rel="stylesheet" href="{{ $css.RelPermalink }}">
-{{ else }}
-{{ $prodCss := $css | fingerprint }}
-<link rel="stylesheet" href="{{ $prodCss.RelPermalink }}" integrity="{{ $prodCss.Data.Integrity }}">
-{{ end }} -->
 
 <link rel="stylesheet" href="/css/base_fonts.css">
 {{- if .Params.case_study_styles }}
 
 {{ $cssOutput := "css/case-studies.css" }}
 {{ $caseStudiesCSS := resources.Get "scss/_case-studies.scss" | resources.ToCSS }}
-<!-- this stylesheet no longer exists -->
-<!-- <link rel="stylesheet" href="/css/case-study-styles.css"> -->
+
 {{ if $inServerMode }}
 <link rel="stylesheet" href="{{ $caseStudiesCSS.RelPermalink }}">
 {{ else }}
