@@ -282,6 +282,8 @@ footer {
 // some issues cannot be addressed due to inlined !important rules.
 #caseStudies {
   section .cols {
+    margin-left: 11%;
+    
     div {
       width: initial !important;
       h2 {
